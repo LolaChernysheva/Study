@@ -5,8 +5,6 @@
 //  Created by admin on 19.07.2021.
 //
 /*MARK: TODO
-- добавить скролл вью
-- добавить клавиатуру
 - добавить поднятие интерфейся на высоту клавиатуры
 - заменить размеры констрейнтов
 */
@@ -21,6 +19,7 @@ class AuthViewController: UIViewController {
 	private let activityIndicatior = UIActivityIndicatorView()
 	private let loginTextField = UITextField()
 	private let passwordTextField = UITextField()
+	private let signUpButton = UIButton(type: .system)
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,8 +86,19 @@ class AuthViewController: UIViewController {
 			maker.leading.trailing.equalToSuperview().inset(20)
 			maker.height.equalTo(30)
 			maker.top.equalTo(passwordTextField).inset(50)
+		}
+		
+		signUpButton.setTitle("Зарегистрироваться", for: .normal)
+		signUpButton.tintColor = UIColor(red: 39/255, green: 135/255, blue: 245/255, alpha: 1)
+		scrollView.addSubview(signUpButton)
+		signUpButton.snp.makeConstraints { maker in
+			maker.centerX.equalToSuperview()
+			maker.leading.trailing.equalToSuperview().inset(20)
+			maker.height.equalTo(30)
+			maker.top.equalTo(signInButton).inset(50)
 			maker.bottom.equalToSuperview()
 		}
+	
 		
 		scrollView.addSubview(activityIndicatior)
 		activityIndicatior.isHidden = true
