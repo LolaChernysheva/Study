@@ -2,10 +2,11 @@
 //  AuthViewController.swift
 //  Study
 //
-//  Created by admin on 19.07.2021.
+//  Created by Lola Chernysheva on 19.07.2021.
 //
 /*MARK: TODO
 - заменить размеры констрейнтов
+- вынести цвета в отдельный класс
 */
 
 import SnapKit
@@ -130,7 +131,7 @@ class AuthViewController: UIViewController {
 	}
 	
 	//подписка под уведомления об изменении состояния клавиатуры
-	func registerForKeyboardNotifications() {
+	private func registerForKeyboardNotifications() {
 		NotificationCenter.default.addObserver(self,
 											   selector: #selector(kbWillShow),
 											   name: UIResponder.keyboardWillShowNotification ,
@@ -142,7 +143,7 @@ class AuthViewController: UIViewController {
 	}
 	
 	//отписка от уведомлений об изменении состояния клавиатуры
-	func removeKeyboardNotifications() {
+	private func removeKeyboardNotifications() {
 		NotificationCenter.default.removeObserver(self,
 												  name: UIResponder.keyboardWillShowNotification ,
 												  object: nil)
@@ -152,7 +153,7 @@ class AuthViewController: UIViewController {
 	}
 	
 	//при появлении клавиатуры
-	@objc func kbWillShow(_ notification: NSNotification) {
+	@objc private func kbWillShow(_ notification: NSNotification) {
 		//получение размеров клавиатуры
 		let userInfo = notification.userInfo
 		let kbFrameSize = (userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
@@ -160,7 +161,7 @@ class AuthViewController: UIViewController {
 	}
 	
 	//при скрытии клавиатуры
-	@objc func kbWillHide() {
+	@objc private func kbWillHide() {
 		scrollView.contentOffset = CGPoint.zero
 	}
 	

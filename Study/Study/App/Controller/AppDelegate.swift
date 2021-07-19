@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  Study
 //
-//  Created by admin on 19.07.2021.
+//  Created by Lola Chernysheva on 19.07.2021.
 //
 
 import UIKit
