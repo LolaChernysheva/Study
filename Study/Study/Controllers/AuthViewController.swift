@@ -7,6 +7,7 @@
 /*MARK: TODO
 - заменить размеры констрейнтов
 - вынести цвета в отдельный класс
+- добавть отступы слева у плейхолдеров
 */
 
 import SnapKit
@@ -62,7 +63,8 @@ class AuthViewController: UIViewController {
 												 green: 242/255,
 												 blue: 244/255,
 												 alpha: 1)
-		loginTextField.text = "Email или телефон"
+		loginTextField.placeholder = "Email или телефон"
+		loginTextField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0)
 		loginTextField.font = UIFont.systemFont(ofSize: 16)
 		loginTextField.layer.cornerRadius = 5.0
 		loginTextField.textColor = UIColor.lightGray
@@ -78,7 +80,8 @@ class AuthViewController: UIViewController {
 													green: 242/255,
 													blue: 244/255,
 													alpha: 1)
-		passwordTextField.text = "Пароль"
+		passwordTextField.placeholder = "Пароль"
+		passwordTextField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0)
 		passwordTextField.font = UIFont.systemFont(ofSize: 16)
 		passwordTextField.layer.cornerRadius = 5.0
 		passwordTextField.textColor = UIColor.lightGray
