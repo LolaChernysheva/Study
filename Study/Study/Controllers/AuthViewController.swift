@@ -16,6 +16,7 @@ import UIKit
 
 class AuthViewController: UIViewController {
 	
+	private let scrollView = UIScrollView()
 	private let signInButton = UIButton(type: .system)
 	private let activityIndicatior = UIActivityIndicatorView()
 	private let loginTextField = UITextField()
@@ -32,10 +33,17 @@ class AuthViewController: UIViewController {
 	
 	private func initialize() {
 		view.backgroundColor = UIColor(red: 255/255, green: 254/255, blue: 254/255, alpha: 1)
+		view.addSubview(scrollView)
+		scrollView.snp.makeConstraints { maker in
+			maker.top.equalToSuperview()
+			maker.trailing.equalToSuperview()
+			maker.leading.equalToSuperview()
+			maker.bottom.equalToSuperview()
+		}
 		
 		let logoImage = UIImage(named: "VK")
 		let logoImageView = UIImageView(image: logoImage)
-		view.addSubview(logoImageView)
+		scrollView.addSubview(logoImageView)
 		logoImageView.snp.makeConstraints { maker in
 			maker.centerX.equalToSuperview()
 			maker.height.equalTo(70)
@@ -48,7 +56,7 @@ class AuthViewController: UIViewController {
 		loginTextField.font = UIFont.systemFont(ofSize: 16)
 		loginTextField.layer.cornerRadius = 5.0
 		loginTextField.textColor = UIColor.lightGray
-		view.addSubview(loginTextField)
+		scrollView.addSubview(loginTextField)
 		loginTextField.snp.makeConstraints { maker in
 			maker.centerX.equalToSuperview()
 			maker.leading.trailing.equalToSuperview().inset(20)
@@ -61,7 +69,7 @@ class AuthViewController: UIViewController {
 		passwordTextField.font = UIFont.systemFont(ofSize: 16)
 		passwordTextField.layer.cornerRadius = 5.0
 		passwordTextField.textColor = UIColor.lightGray
-		view.addSubview(passwordTextField)
+		scrollView.addSubview(passwordTextField)
 		passwordTextField.snp.makeConstraints { maker in
 			maker.centerX.equalToSuperview()
 			maker.leading.trailing.equalToSuperview().inset(20)
@@ -73,15 +81,16 @@ class AuthViewController: UIViewController {
 		signInButton.setTitle("Войти", for: .normal)
 		signInButton.tintColor = .white
 		signInButton.layer.cornerRadius = 5.0
-		view.addSubview(signInButton)
+		scrollView.addSubview(signInButton)
 		signInButton.snp.makeConstraints { maker in
 			maker.centerX.equalToSuperview()
 			maker.leading.trailing.equalToSuperview().inset(20)
 			maker.height.equalTo(30)
 			maker.top.equalTo(passwordTextField).inset(50)
+			maker.bottom.equalToSuperview()
 		}
 		
-		view.addSubview(activityIndicatior)
+		scrollView.addSubview(activityIndicatior)
 		activityIndicatior.isHidden = true
 		activityIndicatior.snp.makeConstraints { maker in
 			maker.centerX.equalToSuperview()
