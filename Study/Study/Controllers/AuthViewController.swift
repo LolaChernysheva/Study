@@ -5,7 +5,6 @@
 //  Created by admin on 19.07.2021.
 //
 /*MARK: TODO
-- добавить поднятие интерфейся на высоту клавиатуры
 - заменить размеры констрейнтов
 */
 
@@ -23,12 +22,16 @@ class AuthViewController: UIViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+		registerForKeyboardNotifications()
 		
 		//скрытие клавиатуры по нажатию на контейнер
 		let hideAction = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
 		view.addGestureRecognizer(hideAction)
 		initialize()
     }
+	deinit {
+		removeKeyboardNotifications()
+	}
 	
 	private func initialize() {
 		view.backgroundColor = UIColor(red: 255/255, green: 254/255, blue: 254/255, alpha: 1)
@@ -107,6 +110,26 @@ class AuthViewController: UIViewController {
 			maker.centerY.equalToSuperview()
 		}
 		signInButton.addTarget(self, action: #selector(buttonPressed), for:.touchUpInside)
+	}
+	
+	func registerForKeyboardNotifications() {
+		NotificationCenter.default.addObserver(self, selector: #selector(kbWillShow), name: UIResponder.keyboardWillShowNotification , object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(kbWillHide), name: UIResponder.keyboardWillHideNotification , object: nil)
+	}
+	
+	func removeKeyboardNotifications() {
+		NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification , object: nil)
+		NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification , object: nil)
+	}
+	
+	@objc func kbWillShow(_ notification: NSNotification) {
+		let userInfo = notification.userInfo
+		let kbFrameSize = (userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+		scrollView.contentOffset = CGPoint(x: 0, y: kbFrameSize.height)
+	}
+	
+	@objc func kbWillHide() {
+		scrollView.contentOffset = CGPoint.zero
 	}
 	
 	@objc private func buttonPressed() {
