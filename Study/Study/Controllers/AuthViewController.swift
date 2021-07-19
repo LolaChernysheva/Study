@@ -13,21 +13,22 @@ import UIKit
 
 class AuthViewController: UIViewController {
 	
-	private let scrollView = UIScrollView()
-	private let signInButton = UIButton(type: .system)
 	private let activityIndicatior = UIActivityIndicatorView()
 	private let loginTextField = UITextField()
-	private let passwordTextField = UITextField()
+	private let scrollView = UIScrollView()
+	private let signInButton = UIButton(type: .system)
 	private let signUpButton = UIButton(type: .system)
+	private let passwordTextField = UITextField()
+	
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+		initialize()
 		registerForKeyboardNotifications()
-		
 		//скрытие клавиатуры по нажатию на контейнер
 		let hideAction = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
 		view.addGestureRecognizer(hideAction)
-		initialize()
+		
     }
 	
 	deinit {
@@ -102,8 +103,7 @@ class AuthViewController: UIViewController {
 			maker.top.equalTo(signInButton).inset(50)
 			maker.bottom.equalToSuperview()
 		}
-	
-		
+
 		scrollView.addSubview(activityIndicatior)
 		activityIndicatior.isHidden = true
 		activityIndicatior.snp.makeConstraints { maker in
