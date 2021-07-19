@@ -29,6 +29,7 @@ class AuthViewController: UIViewController {
 		view.addGestureRecognizer(hideAction)
 		initialize()
     }
+	
 	deinit {
 		removeKeyboardNotifications()
 	}
@@ -112,26 +113,32 @@ class AuthViewController: UIViewController {
 		signInButton.addTarget(self, action: #selector(buttonPressed), for:.touchUpInside)
 	}
 	
+	//подписка под уведомления об изменении состояния клавиатуры
 	func registerForKeyboardNotifications() {
 		NotificationCenter.default.addObserver(self, selector: #selector(kbWillShow), name: UIResponder.keyboardWillShowNotification , object: nil)
 		NotificationCenter.default.addObserver(self, selector: #selector(kbWillHide), name: UIResponder.keyboardWillHideNotification , object: nil)
 	}
 	
+	//отписка от уведомлений об изменении состояния клавиатуры
 	func removeKeyboardNotifications() {
 		NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification , object: nil)
 		NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification , object: nil)
 	}
 	
+	//при появлении клавиатуры
 	@objc func kbWillShow(_ notification: NSNotification) {
+		//получение размеров клавиатуры
 		let userInfo = notification.userInfo
 		let kbFrameSize = (userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
 		scrollView.contentOffset = CGPoint(x: 0, y: kbFrameSize.height)
 	}
 	
+	//при скрытии клавиатуры
 	@objc func kbWillHide() {
 		scrollView.contentOffset = CGPoint.zero
 	}
 	
+	//обработка события нажатия на кнопку
 	@objc private func buttonPressed() {
 		signInButton.backgroundColor = UIColor(red: 181/255, green: 206/255, blue: 234/255, alpha: 1)
 		signInButton.isEnabled = false
