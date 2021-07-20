@@ -31,6 +31,16 @@ class AuthViewController: UIViewController {
 		view.addGestureRecognizer(hideAction)
     }
 	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		signInButton.isEnabled = true
+		activityIndicatior.isHidden = true
+		loginTextField.isEnabled = true
+		passwordTextField.isEnabled = true
+		view.alpha = 1
+		activityIndicatior.stopAnimating()
+	}
+	
 	deinit {
 		removeKeyboardNotifications()
 	}
