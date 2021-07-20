@@ -6,7 +6,9 @@
 //
 /*MARK: TODO
 - заменить размеры констрейнтов
-- вынести цвета в отдельный класс
+- добавить проверку правильности пароля
+- добавить метод для alert
+- связать проверку пароля и переходы
 */
 
 import SnapKit
@@ -32,10 +34,7 @@ class AuthViewController: UIViewController {
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
-		signInButton.backgroundColor = UIColor(red: 39/255,
-											   green: 135/255,
-											   blue: 245/255,
-											   alpha: 1)
+		signInButton.backgroundColor = ButtonAppearance.buttonIsActive
 		signInButton.isEnabled = true
 		activityIndicatior.isHidden = true
 		loginTextField.isEnabled = true
@@ -48,11 +47,20 @@ class AuthViewController: UIViewController {
 		removeKeyboardNotifications()
 	}
 	
+	//проверка корректоности логина и пароля
+	private func checkUserData() -> Bool {
+		guard
+			let login = loginTextField.text,
+			let password = passwordTextField.text else { return false }
+		if login == "user" && password == "123" {
+			return true
+		} else {
+			return false
+		}
+	}
+	
 	private func initialize() {
-		view.backgroundColor = UIColor(red: 255/255,
-									   green: 254/255,
-									   blue: 254/255,
-									   alpha: 1)
+		view.backgroundColor = AppAppearence.backgroundColor
 		view.addSubview(scrollView)
 		scrollView.snp.makeConstraints { maker in
 			maker.top.equalToSuperview()
@@ -71,10 +79,7 @@ class AuthViewController: UIViewController {
 			maker.top.equalToSuperview().inset(100)
 		}
 		
-		loginTextField.backgroundColor = UIColor(red: 241/255,
-												 green: 242/255,
-												 blue: 244/255,
-												 alpha: 1)
+		loginTextField.backgroundColor = AppAppearence.textFieldBackgroundColor
 		loginTextField.placeholder = "Email или телефон"
 		loginTextField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0)
 		loginTextField.font = UIFont.systemFont(ofSize: 16)
@@ -88,10 +93,7 @@ class AuthViewController: UIViewController {
 			maker.top.equalTo(logoImageView).inset(150)
 		}
 		
-		passwordTextField.backgroundColor = UIColor(red: 241/255,
-													green: 242/255,
-													blue: 244/255,
-													alpha: 1)
+		passwordTextField.backgroundColor = AppAppearence.textFieldBackgroundColor
 		passwordTextField.placeholder = "Пароль"
 		passwordTextField.layer.sublayerTransform = CATransform3DMakeTranslation(10, 0, 0)
 		passwordTextField.font = UIFont.systemFont(ofSize: 16)
@@ -105,10 +107,7 @@ class AuthViewController: UIViewController {
 			maker.top.equalTo(loginTextField).inset(50)
 		}
 		
-		signInButton.backgroundColor = UIColor(red: 39/255,
-											   green: 135/255,
-											   blue: 245/255,
-											   alpha: 1)
+		signInButton.backgroundColor = ButtonAppearance.buttonIsActive
 		signInButton.setTitle("Войти", for: .normal)
 		signInButton.tintColor = .white
 		signInButton.layer.cornerRadius = 5.0
@@ -121,10 +120,7 @@ class AuthViewController: UIViewController {
 		}
 		
 		signUpButton.setTitle("Зарегистрироваться", for: .normal)
-		signUpButton.tintColor = UIColor(red: 39/255,
-										 green: 135/255,
-										 blue: 245/255,
-										 alpha: 1)
+		signUpButton.tintColor = ButtonAppearance.buttonIsActive
 		scrollView.addSubview(signUpButton)
 		signUpButton.snp.makeConstraints { maker in
 			maker.centerX.equalToSuperview()
@@ -179,6 +175,7 @@ class AuthViewController: UIViewController {
 		var secondViewController = UIViewController()
 		if (sender.isEqual(signInButton)){
 			secondViewController = TabbarController()
+			checkUserData()
 		} else if (sender.isEqual(signUpButton)) {
 			 secondViewController = SignUpViewController()
 		}
@@ -200,10 +197,7 @@ class AuthViewController: UIViewController {
 	
 	//обработка события нажатия на кнопку
 	@objc private func buttonPressed() {
-		signInButton.backgroundColor = UIColor(red: 181/255,
-											   green: 206/255,
-											   blue: 234/255,
-											   alpha: 1)
+		signInButton.backgroundColor = ButtonAppearance.bittonIsInactive
 		signInButton.isEnabled = false
 		activityIndicatior.isHidden = false
 		loginTextField.isEnabled = false

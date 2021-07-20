@@ -19,6 +19,7 @@
 		84072FAD26A6C6A400B0A9B8 /* GroupsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84072FAC26A6C6A400B0A9B8 /* GroupsListTableViewController.swift */; };
 		84072FAF26A6CACD00B0A9B8 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84072FAE26A6CACD00B0A9B8 /* SignUpViewController.swift */; };
 		84072FB126A6D19200B0A9B8 /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84072FB026A6D19200B0A9B8 /* TabbarController.swift */; };
+		84072FB326A6F89500B0A9B8 /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84072FB226A6F89500B0A9B8 /* CustomColors.swift */; };
 		E4BE62B91C3652EC020631A3 /* Pods_StudyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8478001161ECBF304654FCE6 /* Pods_StudyTests.framework */; };
 		E96022E1DC6CFBF3C443CAAD /* Pods_Study.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2938D86AADCB7148DCFBEE47 /* Pods_Study.framework */; };
 /* End PBXBuildFile section */
@@ -64,6 +65,7 @@
 		84072FAC26A6C6A400B0A9B8 /* GroupsListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsListTableViewController.swift; sourceTree = "<group>"; };
 		84072FAE26A6CACD00B0A9B8 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		84072FB026A6D19200B0A9B8 /* TabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarController.swift; sourceTree = "<group>"; };
+		84072FB226A6F89500B0A9B8 /* CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
 		8478001161ECBF304654FCE6 /* Pods_StudyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StudyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		984145B20B4068A535F59347 /* Pods-Study-StudyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Study-StudyUITests.release.xcconfig"; path = "Target Support Files/Pods-Study-StudyUITests/Pods-Study-StudyUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A3A7FCD074BFF91371A31234 /* Pods-StudyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StudyTests.release.xcconfig"; path = "Target Support Files/Pods-StudyTests/Pods-StudyTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -122,12 +124,13 @@
 		84072F6E26A58E9C00B0A9B8 /* Study */ = {
 			isa = PBXGroup;
 			children = (
+				84072FA126A59F1C00B0A9B8 /* App */,
 				84072FA426A59F3F00B0A9B8 /* Views */,
 				84072FA326A59F3900B0A9B8 /* Models */,
 				84072FA226A59F2600B0A9B8 /* Controllers */,
-				84072FA126A59F1C00B0A9B8 /* App */,
 				84072F7826A58EA000B0A9B8 /* Assets.xcassets */,
 				84072F7D26A58EA000B0A9B8 /* Info.plist */,
+				84072FB226A6F89500B0A9B8 /* CustomColors.swift */,
 			);
 			path = Study;
 			sourceTree = "<group>";
@@ -472,6 +475,7 @@
 			files = (
 				84072FAF26A6CACD00B0A9B8 /* SignUpViewController.swift in Sources */,
 				84072F7026A58E9C00B0A9B8 /* AppDelegate.swift in Sources */,
+				84072FB326A6F89500B0A9B8 /* CustomColors.swift in Sources */,
 				84072FAD26A6C6A400B0A9B8 /* GroupsListTableViewController.swift in Sources */,
 				84072FAB26A6C66C00B0A9B8 /* FriendsListTableViewController.swift in Sources */,
 				84072FA926A59F8D00B0A9B8 /* AuthViewController.swift in Sources */,
