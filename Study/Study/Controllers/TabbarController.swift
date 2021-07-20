@@ -2,30 +2,40 @@
 //  TabbarController.swift
 //  Study
 //
-//  Created by admin on 20.07.2021.
+//  Created by Lola Chernysheva on 20.07.2021.
 //
 
 import UIKit
 
-class TabbarController: UITabBarController {
+class TabbarController: UITabBarController, UITabBarControllerDelegate {
 
-	
-	
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+		delegate = self
     }
+	
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		
+		let friendsTableViewController = FriendsListTableViewController()
+		let friendsIcon = UITabBarItem(title: "Друзья",
+									   image: UIImage(named: "friends.png"),
+									   selectedImage: UIImage(named: "friends.png"))
+		let groupsTableViewController = GroupsListTableViewController()
+		let groupsIcon = UITabBarItem(title: "Сообщества",
+									  image: UIImage(named: "groups.png"),
+									  selectedImage: UIImage(named: "groups.png"))
+		let controllers = [friendsTableViewController, groupsTableViewController]
+		
+		friendsTableViewController.tabBarItem = friendsIcon
+		groupsTableViewController.tabBarItem = groupsIcon
+		self.viewControllers = controllers
+		
+	}
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+	//MARC: Delegate method
+	func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+		return true
+	}
 
 }

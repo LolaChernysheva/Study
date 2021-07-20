@@ -161,10 +161,11 @@ class AuthViewController: UIViewController {
 												  object: nil)
 	}
 	
+	//логика перехода между экранами
 	@objc private func goToSecondViewController(sender: UIButton) {
 		var secondViewController = UIViewController()
 		if (sender.isEqual(signInButton)){
-			secondViewController = FriendsListTableViewController()
+			secondViewController = TabbarController()
 		} else if (sender.isEqual(signUpButton)) {
 			 secondViewController = SignUpViewController()
 		}
