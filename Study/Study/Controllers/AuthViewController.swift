@@ -7,7 +7,6 @@
 /*MARK: TODO
 - заменить размеры констрейнтов
 - вынести цвета в отдельный класс
-- добавть отступы слева у плейхолдеров
 */
 
 import SnapKit
@@ -33,6 +32,10 @@ class AuthViewController: UIViewController {
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
+		signInButton.backgroundColor = UIColor(red: 39/255,
+											   green: 135/255,
+											   blue: 245/255,
+											   alpha: 1)
 		signInButton.isEnabled = true
 		activityIndicatior.isHidden = true
 		loginTextField.isEnabled = true
