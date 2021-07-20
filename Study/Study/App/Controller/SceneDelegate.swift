@@ -15,7 +15,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 	func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 		if let windowScene = scene as? UIWindowScene {
 			let window = UIWindow(windowScene: windowScene)
-			window.rootViewController = AuthViewController()
+			let nc = UINavigationController()
+			let authViewController = AuthViewController()
+			nc.pushViewController(authViewController, animated: true)
+			window.rootViewController = nc
 			self.window = window
 			window.makeKeyAndVisible()
 		}

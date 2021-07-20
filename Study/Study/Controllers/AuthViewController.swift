@@ -29,7 +29,6 @@ class AuthViewController: UIViewController {
 		//скрытие клавиатуры по нажатию на контейнер
 		let hideAction = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
 		view.addGestureRecognizer(hideAction)
-		
     }
 	
 	deinit {
@@ -131,6 +130,13 @@ class AuthViewController: UIViewController {
 		signInButton.addTarget(self,
 							   action: #selector(buttonPressed),
 							   for:.touchUpInside)
+		signInButton.addTarget(self,
+							   action: #selector(goToSecondViewController),
+							   for:.touchUpInside)
+		signUpButton.addTarget(self,
+							   action: #selector(goToSecondViewController),
+							   for:.touchUpInside)
+		
 	}
 	
 	//подписка под уведомления об изменении состояния клавиатуры
@@ -155,6 +161,16 @@ class AuthViewController: UIViewController {
 												  object: nil)
 	}
 	
+	@objc private func goToSecondViewController(sender: UIButton) {
+		var secondViewController = UIViewController()
+		if (sender.isEqual(signInButton)){
+			secondViewController = FriendsListTableViewController()
+		} else if (sender.isEqual(signUpButton)) {
+			 secondViewController = SignUpViewController()
+		}
+		self.navigationController?.pushViewController(secondViewController, animated: true)
+	}
+
 	//при появлении клавиатуры
 	@objc private func kbWillShow(_ notification: NSNotification) {
 		//получение размеров клавиатуры
