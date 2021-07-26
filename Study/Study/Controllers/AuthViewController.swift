@@ -6,8 +6,6 @@
 //
 /*MARK: TODO
 - заменить размеры констрейнтов
-- добавить метод для alert
-- связать проверку пароля и переходы
 */
 
 import SnapKit
@@ -160,21 +158,20 @@ class AuthViewController: UIViewController {
 	//логика перехода между экранами
 	@objc private func goToSecondViewController(sender: UIButton) {
 		var secondViewController = UIViewController()
-		if (sender.isEqual(signInButton)){
+		let checkResult = checkUserData()
+		//если нажата кнопка авторизации, и данные пользователя верны
+		if (sender.isEqual(signInButton)) && checkResult {
 			secondViewController = TabbarController()
-			//проверка данных
-			let checkResult = checkUserData()
-			//если данные не верны, показываем ошибку
-			if !checkResult {
+			self.navigationController?.pushViewController(secondViewController, animated: true)
+		//если данные пользователя не верны, выводим ошибку
+		} else if (sender.isEqual(signInButton)) && (!checkResult) {
 				showLoginErrorAlert()
-			//если данные верны, выполняем переход
-			} else {
-				self.navigationController?.pushViewController(secondViewController, animated: true)
-			}
-		} else if (sender.isEqual(signUpButton)) {
-			 secondViewController = SignUpViewController()
 		}
-		self.navigationController?.pushViewController(secondViewController, animated: true)
+		//если нажата кнопка регистрации
+		else if (sender.isEqual(signUpButton)) {
+			 secondViewController = SignUpViewController()
+			self.navigationController?.pushViewController(secondViewController, animated: true)
+		}
 	}
 
 	//при появлении клавиатуры
