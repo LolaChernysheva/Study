@@ -6,7 +6,6 @@
 //
 /*MARK: TODO
 - заменить размеры констрейнтов
-- добавить проверку правильности пароля
 - добавить метод для alert
 - связать проверку пароля и переходы
 */
@@ -45,18 +44,6 @@ class AuthViewController: UIViewController {
 	
 	deinit {
 		removeKeyboardNotifications()
-	}
-	
-	//проверка корректоности логина и пароля
-	private func checkUserData() -> Bool {
-		guard
-			let login = loginTextField.text,
-			let password = passwordTextField.text else { return false }
-		if login == "user" && password == "123" {
-			return true
-		} else {
-			return false
-		}
 	}
 	
 	private func initialize() {
@@ -175,7 +162,15 @@ class AuthViewController: UIViewController {
 		var secondViewController = UIViewController()
 		if (sender.isEqual(signInButton)){
 			secondViewController = TabbarController()
-			checkUserData()
+			//проверка данных
+			let checkResult = checkUserData()
+			//если данные не верны, показываем ошибку
+			if !checkResult {
+				showLoginErrorAlert()
+			//если данные верны, выполняем переход
+			} else {
+				self.navigationController?.pushViewController(secondViewController, animated: true)
+			}
 		} else if (sender.isEqual(signUpButton)) {
 			 secondViewController = SignUpViewController()
 		}
@@ -209,5 +204,29 @@ class AuthViewController: UIViewController {
 	//скрытие клавиатуры по нажатию на контейнер
 	@objc private func hideKeyboard() {
 		view.endEditing(true)
+	}
+	
+	//проверка корректоности логина и пароля
+	private func checkUserData() -> Bool {
+		guard
+			let login = loginTextField.text,
+			let password = passwordTextField.text else { return false }
+		if login == "User" && password == "123" {
+			return true
+		} else {
+			return false
+		}
+	}
+	
+	//обработка ошибки ввода пароля
+	private func showLoginErrorAlert() {
+		//создание контрроллера
+		let alert = UIAlertController(title: "Ошибка", message: "Введены неверные данные пользователя", preferredStyle: .alert)
+		//создание кнопки для алерта
+		let alertAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+		//добавление кнопки на алерт
+		alert.addAction(alertAction)
+		//показываем UIAlertController
+		present(alert, animated: true, completion: nil)
 	}
 }
