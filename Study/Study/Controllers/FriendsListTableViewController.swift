@@ -11,11 +11,11 @@ import UIKit
 - добавить кастомную ячейку и подключиь ее
 */
 class FriendsListTableViewController: UITableViewController {
-	
 	var friends = ["User1", "User2", "User3"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
+		
     }
 
     // MARK: - Table view data source
@@ -31,6 +31,12 @@ class FriendsListTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
 		return friends.count
     }
+	
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		
+		self.navigationController?.pushViewController(FriendPhotoViewController(), animated: true)
+
+	}
 
 
 }
