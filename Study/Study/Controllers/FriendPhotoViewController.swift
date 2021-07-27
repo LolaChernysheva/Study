@@ -30,6 +30,8 @@ class FriendPhotoViewController: UIViewController, UICollectionViewDelegate, UIC
 		collectionView.dataSource = self
 	}
 	
+	//MARK: - DATA SOURCE
+	
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		10
 	}
@@ -40,6 +42,7 @@ class FriendPhotoViewController: UIViewController, UICollectionViewDelegate, UIC
 		return cell
 	}
 	
+	//настройка collectionView
 	private func initialize() {
 		guard let collectionView = collectionView else { return }
 		view.backgroundColor = AppAppearence.backgroundColor
@@ -50,7 +53,6 @@ class FriendPhotoViewController: UIViewController, UICollectionViewDelegate, UIC
 			maker.leading.equalToSuperview()
 			maker.bottom.equalToSuperview()
 		}
-		
 	}
 
 }
