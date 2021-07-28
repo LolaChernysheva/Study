@@ -21,19 +21,9 @@ class FriendPhotoViewController: UIViewController, UICollectionViewDelegate, UIC
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
-		let layout = UICollectionViewFlowLayout()
-		layout.minimumLineSpacing = 100.0
-		layout.minimumInteritemSpacing = 10.0
-		layout.itemSize = CGSize(width: self.view.frame.width, height: (self.view.frame.height)/2)
-		layout.scrollDirection = .vertical
-		
-		collectionView = UICollectionView(frame: view.frame, collectionViewLayout: layout)
-		guard let collectionView = collectionView else { return }
-		collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 		initialize()
-		collectionView.delegate = self
-		collectionView.dataSource = self
+		collectionView?.delegate = self
+		collectionView?.dataSource = self
 	}
 	
 	//MARK: - DATA SOURCE
@@ -56,7 +46,15 @@ class FriendPhotoViewController: UIViewController, UICollectionViewDelegate, UIC
 	
 	//настройка collectionView
 	private func initialize() {
+		let layout = UICollectionViewFlowLayout()
+		layout.minimumLineSpacing = 100.0
+		layout.minimumInteritemSpacing = 10.0
+		layout.itemSize = CGSize(width: self.view.frame.width, height: (self.view.frame.height)/2)
+		layout.scrollDirection = .vertical
+		
+		collectionView = UICollectionView(frame: view.frame, collectionViewLayout: layout)
 		guard let collectionView = collectionView else { return }
+		collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 		view.backgroundColor = AppAppearence.backgroundColor
 		view.addSubview(collectionView)
 		collectionView.backgroundColor = AppAppearence.backgroundColor
