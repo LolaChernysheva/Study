@@ -8,6 +8,7 @@
 /* MARK: -TODO
 	-переписать кострейнты (или вынести константы)
 	- вынести настойку UI в отдельный метод
+	- натсроить отображение фотографии на коллекции в зависимости от фото в ячейке таблицы
 */
 import UIKit
 import SnapKit
@@ -50,7 +51,6 @@ class FriendPhotoViewController: UIViewController, UICollectionViewDelegate, UIC
 			maker.trailing.equalToSuperview()
 			maker.leading.equalToSuperview()
 		}
-		
 		return cell
 	}
 	
@@ -67,5 +67,4 @@ class FriendPhotoViewController: UIViewController, UICollectionViewDelegate, UIC
 			maker.bottom.equalToSuperview()
 		}
 	}
-
 }
