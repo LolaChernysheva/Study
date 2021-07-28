@@ -162,13 +162,13 @@ class AuthViewController: UIViewController {
 		//если нажата кнопка авторизации, и данные пользователя верны
 		if (sender.isEqual(signInButton)) && checkResult {
 			secondViewController = TabbarController()
-			self.navigationController?.pushViewController(secondViewController, animated: true)
+			present(secondViewController, animated: true, completion: nil)
 		//если данные пользователя не верны, выводим ошибку
 		} else if (sender.isEqual(signInButton)) && (!checkResult) {
 				showLoginErrorAlert()
 		} else if (sender.isEqual(signUpButton)) {
 			 secondViewController = SignUpViewController()
-			self.navigationController?.pushViewController(secondViewController, animated: true)
+			present(secondViewController, animated: true, completion: nil)
 		}
 	}
 
