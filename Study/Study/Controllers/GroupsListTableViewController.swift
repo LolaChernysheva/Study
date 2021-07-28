@@ -13,6 +13,9 @@ class GroupsListTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+		
+		let rightButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(goToSearchGroupVC))
+		self.navigationItem.rightBarButtonItem = rightButton
 
     }
 
@@ -29,6 +32,10 @@ class GroupsListTableViewController: UITableViewController {
 		cell.textLabel?.text = groupsList[indexPath.row]
 		cell.imageView?.image = UIImage(named: "VK")
 		return cell
+	}
+	
+	@objc private func goToSearchGroupVC() {
+		
 	}
 
 
