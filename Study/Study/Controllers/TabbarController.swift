@@ -11,6 +11,7 @@ class TabbarController: UITabBarController, UITabBarControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+		self.modalPresentationStyle = .fullScreen
 		delegate = self
     }
 	
@@ -25,7 +26,8 @@ class TabbarController: UITabBarController, UITabBarControllerDelegate {
 		let groupsIcon = UITabBarItem(title: "Сообщества",
 									  image: UIImage(named: "groups.png"),
 									  selectedImage: UIImage(named: "groups.png"))
-		let controllers = [friendsTableViewController, groupsTableViewController]
+		//let controllers = [friendsTableViewController, groupsTableViewController]
+		let controllers = [UINavigationController(rootViewController: friendsTableViewController), UINavigationController(rootViewController: groupsTableViewController)]
 		
 		friendsTableViewController.tabBarItem = friendsIcon
 		groupsTableViewController.tabBarItem = groupsIcon
