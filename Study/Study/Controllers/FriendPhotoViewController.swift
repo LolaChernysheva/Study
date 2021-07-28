@@ -2,9 +2,13 @@
 //  FriendPhotoViewController.swift
 //  Study
 //
-//  Created by admin on 27.07.2021.
+//  Created by Lola Chernysheva on 27.07.2021.
 //
 
+/* MARK: -TODO
+	-переписать кострейнты (или вынести константы)
+	- вынести настойку UI в отдельный метод
+*/
 import UIKit
 import SnapKit
 
@@ -12,14 +16,15 @@ class FriendPhotoViewController: UIViewController, UICollectionViewDelegate, UIC
 	
 	private var collectionView: UICollectionView?
 	private let reuseIdentifier: String = "ReuseIdentifier"
+	private let photoImageView: UIImageView? = UIImageView(image: UIImage(named: "VK"))
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
 		let layout = UICollectionViewFlowLayout()
-		layout.minimumLineSpacing = 10.0
+		layout.minimumLineSpacing = 100.0
 		layout.minimumInteritemSpacing = 10.0
-		layout.itemSize = CGSize(width: 100.0, height: 100.0)
+		layout.itemSize = CGSize(width: self.view.frame.width, height: (self.view.frame.height)/2)
 		layout.scrollDirection = .vertical
 		
 		collectionView = UICollectionView(frame: view.frame, collectionViewLayout: layout)
@@ -33,12 +38,19 @@ class FriendPhotoViewController: UIViewController, UICollectionViewDelegate, UIC
 	//MARK: - DATA SOURCE
 	
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		10
+		return 1
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		let cell: UICollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-		cell.backgroundColor = .magenta
+		cell.addSubview((photoImageView ?? photoImageView)!)
+		photoImageView?.snp.makeConstraints { maker in
+			maker.top.equalToSuperview()
+			maker.bottom.equalToSuperview()
+			maker.trailing.equalToSuperview()
+			maker.leading.equalToSuperview()
+		}
+		
 		return cell
 	}
 	
@@ -47,6 +59,7 @@ class FriendPhotoViewController: UIViewController, UICollectionViewDelegate, UIC
 		guard let collectionView = collectionView else { return }
 		view.backgroundColor = AppAppearence.backgroundColor
 		view.addSubview(collectionView)
+		collectionView.backgroundColor = AppAppearence.backgroundColor
 		collectionView.snp.makeConstraints { maker in
 			maker.top.equalToSuperview()
 			maker.trailing.equalToSuperview()
