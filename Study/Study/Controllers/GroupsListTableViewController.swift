@@ -33,6 +33,24 @@ class GroupsListTableViewController: UITableViewController {
 		return cell
 	}
 	
+	//удаление ячейки
+	override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+		return true
+	}
+	
+	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+		switch editingStyle {
+		case .delete:
+			searchGroupController.groupToAdd.append(groupsList[indexPath.row])
+			searchGroupController.tableView.reloadData()
+			groupsList.remove(at: indexPath.row)
+			tableView.reloadData()
+			
+		default:
+			return
+		}
+	}
+	
 	private func initialize() {
 		view.backgroundColor = AppAppearence.backgroundColor
 		self.modalPresentationStyle = .fullScreen
@@ -46,6 +64,4 @@ class GroupsListTableViewController: UITableViewController {
 		searchGroupController.groupListVC = self
 		self.navigationController?.pushViewController(searchGroupController, animated: true)
 	}
-
-
 }

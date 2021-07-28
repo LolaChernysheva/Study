@@ -10,7 +10,7 @@ import UIKit
 class SearchGroupTableViewController: UITableViewController {
 
 	var groupListVC: GroupsListTableViewController?
-	private var groupToAdd = ["GroupAdd1", "GroupAdd2", "AddGroup3"]
+	public var groupToAdd = ["GroupAdd1", "GroupAdd2", "AddGroup3"]
     override func viewDidLoad() {
         super.viewDidLoad()
 		initialize()
