@@ -9,13 +9,12 @@ import UIKit
 
 class GroupsListTableViewController: UITableViewController {
 	
-	private let groupsList = ["Group1", "Group2", "Group3"]
+	var searchGroupController = SearchGroupTableViewController()
+	public var groupsList = ["Group1", "Group2", "Group3"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-		
-		let rightButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(goToSearchGroupVC))
-		self.navigationItem.rightBarButtonItem = rightButton
+		initialize()
 
     }
 
@@ -34,8 +33,17 @@ class GroupsListTableViewController: UITableViewController {
 		return cell
 	}
 	
-	@objc private func goToSearchGroupVC() {
+	private func initialize() {
+		view.backgroundColor = AppAppearence.backgroundColor
+		self.modalPresentationStyle = .fullScreen
+		let rightButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(goToSearchGroupVC))
+		self.navigationItem.rightBarButtonItem = rightButton
 		
+	}
+	
+	@objc private func goToSearchGroupVC() {
+		searchGroupController.groupListVC = self
+		self.navigationController?.pushViewController(searchGroupController, animated: true)
 	}
 
 
