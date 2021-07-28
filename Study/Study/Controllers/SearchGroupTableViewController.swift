@@ -30,15 +30,14 @@ class SearchGroupTableViewController: UITableViewController {
 		return cell
 	}
 	
+	//добавление новой группы по клику на ячейку
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		
 		guard let groupListVC = groupListVC else { return }
 		groupListVC.groupsList.append(groupToAdd[indexPath.row])
 		groupToAdd.remove(at: indexPath.row)
 		groupListVC.tableView.reloadData()
 		tableView.reloadData()
 		self.navigationController?.popViewController(animated: true)
-		
 	}
 
 	private func initialize() {

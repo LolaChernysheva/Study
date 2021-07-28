@@ -41,6 +41,7 @@ class GroupsListTableViewController: UITableViewController {
 		
 	}
 	
+	//переход на экран поиска
 	@objc private func goToSearchGroupVC() {
 		searchGroupController.groupListVC = self
 		self.navigationController?.pushViewController(searchGroupController, animated: true)
