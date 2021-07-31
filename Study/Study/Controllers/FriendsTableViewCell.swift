@@ -20,34 +20,23 @@ class FriendsTableViewCell: UITableViewCell {
         contentView.backgroundColor = UIColor.orange
         contentView.addSubview(friendName)
         contentView.addSubview(friendAvatar)
-        
-        
-        
-        
+
         friendAvatar.snp.makeConstraints { (maker) in
             maker.top.bottom.equalToSuperview()
             maker.leading.equalToSuperview().inset(5)
-    
-            
         }
-        friendAvatar.image = UIImage(named: "VK")
-        
         
         friendName.snp.makeConstraints { (maker) in
             maker.top.bottom.equalToSuperview()
             maker.leading.equalTo(friendAvatar).inset(5)
            
         }
-         friendName.text = "fgchvjbjn"
         
-        
+        friendAvatar.image = UIImage(named: "VK")
+        friendName.text = "fgchvjbjn"
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-
-    
-
 }

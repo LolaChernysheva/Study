@@ -7,10 +7,9 @@
 
 import UIKit
 
-/* MARK: TODO
-- добавить кастомную ячейку и подключиь ее
-*/
+
 class FriendsListTableViewController: UITableViewController {
+    
 	static var friends = ["User1", "User2", "User3"]
 
     override func viewDidLoad() {
@@ -18,7 +17,6 @@ class FriendsListTableViewController: UITableViewController {
         self.tableView.register(FriendsTableViewCell.self, forCellReuseIdentifier: FriendsTableViewCell.friendsCellIdentifier)
     }
 
-    // MARK: - Table view data source
 
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FriendsTableViewCell.friendsCellIdentifier, for: indexPath)
@@ -26,7 +24,7 @@ class FriendsListTableViewController: UITableViewController {
 	}
 	
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+        
         return FriendsListTableViewController.friends.count
     }
 	
