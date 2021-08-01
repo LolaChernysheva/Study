@@ -10,8 +10,8 @@ import SnapKit
 
 class FriendsTableViewCell: UITableViewCell {
 
-    private var friendName = UILabel()
-    private var friendAvatar = UIImageView()
+    var friendName = UILabel()
+    var friendAvatar = UIImageView()
     static let friendsCellIdentifier = "FriendsCellIdentifier"
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -22,18 +22,19 @@ class FriendsTableViewCell: UITableViewCell {
         contentView.addSubview(friendAvatar)
 
         friendAvatar.snp.makeConstraints { (maker) in
-            maker.top.bottom.equalToSuperview()
+            maker.centerY.equalToSuperview()
             maker.leading.equalToSuperview().inset(5)
+            maker.width.height.equalTo(50)
+            
         }
         
         friendName.snp.makeConstraints { (maker) in
             maker.top.bottom.equalToSuperview()
-            maker.leading.equalTo(friendAvatar).inset(5)
-           
+            maker.leading.equalTo(friendAvatar.snp.trailing)
+            maker.trailing.equalToSuperview().inset(-5)
         }
         
         friendAvatar.image = UIImage(named: "VK")
-        friendName.text = "fgchvjbjn"
     }
     
     required init?(coder: NSCoder) {

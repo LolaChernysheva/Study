@@ -1,7 +1,6 @@
 {
   "images" : [
     {
-      "filename" : "VK.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -11,19 +10,6 @@
     },
     {
       "idiom" : "universal",
-      "scale" : "3x"
-    },
-    {
-      "filename" : "VK-1.png",
-      "idiom" : "iphone",
-      "scale" : "1x"
-    },
-    {
-      "idiom" : "iphone",
-      "scale" : "2x"
-    },
-    {
-      "idiom" : "iphone",
       "scale" : "3x"
     }
   ],
