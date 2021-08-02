@@ -12,7 +12,7 @@
 import SnapKit
 import UIKit
 
-class AuthViewController: UIViewController {
+final class AuthViewController: UIViewController {
 	
 	private let activityIndicatior = UIActivityIndicatorView()
 	private let loginTextField = UITextField()
