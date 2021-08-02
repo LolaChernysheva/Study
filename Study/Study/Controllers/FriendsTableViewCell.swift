@@ -11,7 +11,7 @@ import SnapKit
 class FriendsTableViewCell: UITableViewCell {
 
     var friendName = UILabel()
-    var friendAvatar = UIImageView()
+    var friendAvatar = AvatarView()
     static let friendsCellIdentifier = "FriendsCellIdentifier"
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -32,8 +32,6 @@ class FriendsTableViewCell: UITableViewCell {
             maker.leading.equalTo(friendAvatar.snp.trailing)
             maker.trailing.equalToSuperview().inset(-5)
         }
-        
-        friendAvatar.image = UIImage(named: "VK")
     }
     
     required init?(coder: NSCoder) {

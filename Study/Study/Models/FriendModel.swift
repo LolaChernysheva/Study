@@ -10,4 +10,5 @@ import Foundation
 struct FriendModel {
 	var name: String
 	var isOnline: Bool
+    var avatarPath: String
 }

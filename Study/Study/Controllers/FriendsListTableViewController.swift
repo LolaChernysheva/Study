@@ -14,28 +14,28 @@ import UIKit
 
 class FriendsListTableViewController: UITableViewController {
     
-     var friends = [FriendModel(name: "Pavel", isOnline: true),
-                    FriendModel(name: "Lolita", isOnline: false),
-                    FriendModel(name: "Ivan", isOnline: true),
-                    FriendModel(name: "Maria", isOnline: true),
-                    FriendModel(name: "Olga", isOnline: false),
-                    FriendModel(name: "Svetlana", isOnline: true),
-                    FriendModel(name: "Mikhail", isOnline: false),
-                    FriendModel(name: "Kristina", isOnline: true),
-                    FriendModel(name: "Zinaida", isOnline: false),
-                    FriendModel(name: "Oksana", isOnline: false),
-                    FriendModel(name: "Sergey", isOnline: true),
-                    FriendModel(name: "Alexandr", isOnline: true),
-                    FriendModel(name: "Alexandra", isOnline: true),
-                    FriendModel(name: "Vadim", isOnline: false),
-                    FriendModel(name: "Nastya", isOnline: true),
-                    FriendModel(name: "Vera", isOnline: true),
-                    FriendModel(name: "Denis", isOnline: true),
-                    FriendModel(name: "Ilya", isOnline: true),
-                    FriendModel(name: "Alena", isOnline: true),
-                    FriendModel(name: "Ira", isOnline: true),
-                    FriendModel(name: "Maxim", isOnline: true),
-                    FriendModel(name: "Liza", isOnline: true)]
+    var friends = [FriendModel(name: "Pavel", isOnline: true, avatarPath: "VK"),
+                   FriendModel(name: "Lolita", isOnline: false, avatarPath: "VK"),
+                   FriendModel(name: "Ivan", isOnline: true, avatarPath: "VK"),
+                    FriendModel(name: "Maria", isOnline: true, avatarPath: "VK"),
+                    FriendModel(name: "Olga", isOnline: false, avatarPath: "VK"),
+                    FriendModel(name: "Svetlana", isOnline: true, avatarPath: "VK"),
+                    FriendModel(name: "Mikhail", isOnline: false, avatarPath: "VK"),
+                    FriendModel(name: "Kristina", isOnline: true, avatarPath: "VK"),
+                    FriendModel(name: "Zinaida", isOnline: false, avatarPath: "VK"),
+                    FriendModel(name: "Oksana", isOnline: false, avatarPath: "VK"),
+                    FriendModel(name: "Sergey", isOnline: true, avatarPath: "VK"),
+                    FriendModel(name: "Alexandr", isOnline: true, avatarPath: "VK"),
+                    FriendModel(name: "Alexandra", isOnline: true, avatarPath: "VK"),
+                    FriendModel(name: "Vadim", isOnline: false, avatarPath: "VK"),
+                    FriendModel(name: "Nastya", isOnline: true, avatarPath: "VK"),
+                    FriendModel(name: "Vera", isOnline: true, avatarPath: "VK"),
+                    FriendModel(name: "Denis", isOnline: true, avatarPath: "VK"),
+                    FriendModel(name: "Ilya", isOnline: true, avatarPath: "VK"),
+                    FriendModel(name: "Alena", isOnline: true, avatarPath: "VK"),
+                    FriendModel(name: "Ira", isOnline: true, avatarPath: "VK"),
+                    FriendModel(name: "Maxim", isOnline: true, avatarPath: "VK"),
+                    FriendModel(name: "Liza", isOnline: true, avatarPath: "VK")]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +45,7 @@ class FriendsListTableViewController: UITableViewController {
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: FriendsTableViewCell.friendsCellIdentifier, for: indexPath) as? FriendsTableViewCell else { return UITableViewCell() }
         cell.friendName.text = friends[indexPath.row].name
+        cell.friendAvatar.avatarImageView.image = UIImage(named: friends[indexPath.row].avatarPath)
         return cell
 	}
 	
