@@ -14,7 +14,20 @@ import UIKit
 
 class FriendsListTableViewController: UITableViewController {
     
-	 var friends = ["User1", "User2", "User3"]
+     var friends = [FriendModel(name: "Pavel", isOnline: true),
+                    FriendModel(name: "Lolita", isOnline: false),
+                    FriendModel(name: "Ivan", isOnline: true),
+                    FriendModel(name: "Maria", isOnline: true),
+                    FriendModel(name: "Olga", isOnline: false),
+                    FriendModel(name: "Svetlana", isOnline: true),
+                    FriendModel(name: "Mikhail", isOnline: false),
+                    FriendModel(name: "Kristina", isOnline: true),
+                    FriendModel(name: "Zinaida", isOnline: false),
+                    FriendModel(name: "Oksana", isOnline: false),
+                    FriendModel(name: "Sergey", isOnline: true),
+                    FriendModel(name: "Alexandr", isOnline: true),
+                    FriendModel(name: "Alexandra", isOnline: true),
+                    FriendModel(name: "Vadim", isOnline: false)]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +35,8 @@ class FriendsListTableViewController: UITableViewController {
     }
 
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: FriendsTableViewCell.friendsCellIdentifier, for: indexPath) as!FriendsTableViewCell
-        cell.friendName.text = friends[indexPath.row]
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: FriendsTableViewCell.friendsCellIdentifier, for: indexPath) as? FriendsTableViewCell else { return UITableViewCell() }
+        cell.friendName.text = friends[indexPath.row].name
         return cell
 	}
 	
