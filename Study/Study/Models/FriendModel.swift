@@ -1,5 +1,5 @@
 //
-//  UserModel.swift
+//  FriendModel.swift
 //  Study
 //
 //  Created by admin on 28.07.2021.
@@ -7,9 +7,7 @@
 
 import Foundation
 
-struct User {
+struct FriendModel {
 	var name: String
-	var sername: String
-	var age: String?
-	var isOnline: Bool?
+	var isOnline: Bool
 }
