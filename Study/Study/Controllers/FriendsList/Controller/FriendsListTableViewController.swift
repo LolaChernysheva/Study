@@ -36,16 +36,42 @@ class FriendsListTableViewController: UITableViewController {
                     FriendModel(name: "Ira", isOnline: true, avatarPath: "6"),
                     FriendModel(name: "Maxim", isOnline: true, avatarPath: "7"),
                     FriendModel(name: "Liza", isOnline: true, avatarPath: "1")]
+   
+    //создание секции, применимой только к друзьям
+    var friendsSection = [Sections<FriendModel>]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(FriendsTableViewCell.self, forCellReuseIdentifier: FriendsTableViewCell.friendsCellIdentifier)
+        
+        //создание словаря из массива и группировкой по первому символу name
+        let friendsDictionary = Dictionary.init(grouping: friends) {
+            $0.name.prefix(1)
+        }
+        //конвертация словаря в секцию с заголовком и элементами
+        friendsSection = friendsDictionary.map { Sections(title: String($0.key), items: $0.value) }
+        //сортировка секций по алфавиту
+        friendsSection.sort { $0.title < $1.title }
     }
-
+    
+    //отображение секции
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return friendsSection.count
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+           
+           return friendsSection[section].items.count
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return friendsSection[section].title
+    }
+    
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: FriendsTableViewCell.friendsCellIdentifier, for: indexPath) as? FriendsTableViewCell else { return UITableViewCell() }
-        cell.friendName.text = friends[indexPath.row].name
-        cell.friendAvatar.avatarImageView.image = UIImage(named: friends[indexPath.row].avatarPath)
+        cell.friendName.text = friendsSection[indexPath.section].items[indexPath.row].name
+        cell.friendAvatar.avatarImageView.image = UIImage(named: friendsSection[indexPath.section].items[indexPath.row].avatarPath)
         return cell
 	}
 	
@@ -53,11 +79,6 @@ class FriendsListTableViewController: UITableViewController {
         return 60
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return friends.count
-    }
-	
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		
 		self.navigationController?.pushViewController(FriendPhotoViewController(), animated: true)

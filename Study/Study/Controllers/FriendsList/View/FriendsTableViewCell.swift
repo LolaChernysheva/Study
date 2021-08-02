@@ -5,6 +5,10 @@
 //  Created by Лолита on 30.07.2021.
 //
 
+/*MARK:- TODO
+ -добавить шрифты и размеры текста лейбла ячейки
+ */
+
 import UIKit
 import SnapKit
 
