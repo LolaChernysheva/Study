@@ -29,7 +29,7 @@ class FriendsTableViewCell: UITableViewCell {
         
         friendName.snp.makeConstraints { (maker) in
             maker.centerY.equalToSuperview()
-            maker.leading.equalTo(friendAvatar.snp.trailing)
+            maker.leading.equalTo(friendAvatar.snp.trailing).inset(-5)
             maker.trailing.equalToSuperview().inset(-5)
         }
     }
