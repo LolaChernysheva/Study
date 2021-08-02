@@ -11,7 +11,6 @@
 
 import UIKit
 
-
 class FriendsListTableViewController: UITableViewController {
     
     var friends = [FriendModel(name: "Pavel", isOnline: true, avatarPath: "1"),
@@ -83,4 +82,9 @@ class FriendsListTableViewController: UITableViewController {
 		
 		self.navigationController?.pushViewController(FriendPhotoViewController(), animated: true)
 	}
+    
+    //реализация боковой плашки с алфавитом
+    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        return friendsSection.map { $0.title }
+    }
 }

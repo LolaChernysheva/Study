@@ -19,8 +19,7 @@ class AvatarView: UIView {
     //конструктор инит frame отвечает за формирование класса с помощью кода
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addImage()
-        
+        addImage()   
     }
     
     required init?(coder: NSCoder) {
