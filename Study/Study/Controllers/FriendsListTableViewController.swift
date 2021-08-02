@@ -27,7 +27,15 @@ class FriendsListTableViewController: UITableViewController {
                     FriendModel(name: "Sergey", isOnline: true),
                     FriendModel(name: "Alexandr", isOnline: true),
                     FriendModel(name: "Alexandra", isOnline: true),
-                    FriendModel(name: "Vadim", isOnline: false)]
+                    FriendModel(name: "Vadim", isOnline: false),
+                    FriendModel(name: "Nastya", isOnline: true),
+                    FriendModel(name: "Vera", isOnline: true),
+                    FriendModel(name: "Denis", isOnline: true),
+                    FriendModel(name: "Ilya", isOnline: true),
+                    FriendModel(name: "Alena", isOnline: true),
+                    FriendModel(name: "Ira", isOnline: true),
+                    FriendModel(name: "Maxim", isOnline: true),
+                    FriendModel(name: "Liza", isOnline: true)]
 
     override func viewDidLoad() {
         super.viewDidLoad()
