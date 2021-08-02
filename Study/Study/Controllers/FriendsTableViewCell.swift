@@ -17,7 +17,7 @@ class FriendsTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        contentView.backgroundColor = UIColor.orange
+        contentView.backgroundColor = AppAppearence.backgroundColor
         contentView.addSubview(friendName)
         contentView.addSubview(friendAvatar)
 
@@ -25,7 +25,6 @@ class FriendsTableViewCell: UITableViewCell {
             maker.centerY.equalToSuperview()
             maker.leading.equalToSuperview().inset(5)
             maker.width.height.equalTo(50)
-            
         }
         
         friendName.snp.makeConstraints { (maker) in
