@@ -32,6 +32,7 @@ class FriendsTableViewCell: UITableViewCell {
             maker.leading.equalTo(friendAvatar.snp.trailing).inset(-5)
             maker.trailing.equalToSuperview().inset(-5)
         }
+        friendAvatar.avatarImageView.contentMode = .scaleAspectFill
     }
     
     required init?(coder: NSCoder) {
