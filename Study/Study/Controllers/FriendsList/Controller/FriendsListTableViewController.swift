@@ -42,6 +42,7 @@ class FriendsListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(FriendsTableViewCell.self, forCellReuseIdentifier: FriendsTableViewCell.friendsCellIdentifier)
+        self.navigationItem.title = "Друзья"
         
         //создание словаря из массива и группировкой по первому символу name
         let friendsDictionary = Dictionary.init(grouping: friends) {
@@ -87,4 +88,5 @@ class FriendsListTableViewController: UITableViewController {
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         return friendsSection.map { $0.title }
     }
+    
 }
