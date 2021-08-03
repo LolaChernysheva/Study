@@ -42,7 +42,8 @@ class FriendsListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(FriendsTableViewCell.self, forCellReuseIdentifier: FriendsTableViewCell.friendsCellIdentifier)
-        self.navigationItem.title = "Друзья"
+        updateNavigationBar()
+        
         
         //создание словаря из массива и группировкой по первому символу name
         let friendsDictionary = Dictionary.init(grouping: friends) {
@@ -60,8 +61,7 @@ class FriendsListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-           
-           return friendsSection[section].items.count
+        return friendsSection[section].items.count
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -87,6 +87,11 @@ class FriendsListTableViewController: UITableViewController {
     //реализация боковой плашки с алфавитом
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         return friendsSection.map { $0.title }
+    }
+    
+    private func updateNavigationBar() {
+        self.navigationItem.title = "Друзья"
+        self.navigationController?.navigationBar.barTintColor = AppAppearence.customBlue
     }
     
 }
