@@ -100,7 +100,13 @@ class FriendsListTableViewController: UITableViewController {
         view.tintColor = AppAppearence.backgroundColor
     }
     
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 60.0
+    }
+    
     private func configureSearchBar() {
+        searchController.searchBar.placeholder = "Поиск"
         navigationItem.searchController = searchController
     }
 }
