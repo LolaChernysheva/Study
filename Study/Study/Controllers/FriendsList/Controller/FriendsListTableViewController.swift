@@ -34,12 +34,14 @@ class FriendsListTableViewController: UITableViewController {
    
     //создание секции, применимой только к друзьям
     var friendsSection = [Sections<FriendModel>]()
+    let searchController = UISearchController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(FriendsTableViewCell.self, forCellReuseIdentifier: FriendsTableViewCell.friendsCellIdentifier)
         updateNavigationBar()
-        
+        configureSearchBar()
+        searchController.searchBar.delegate = self
         
         //создание словаря из массива и группировкой по первому символу name
         let friendsDictionary = Dictionary.init(grouping: friends) {
@@ -94,4 +96,20 @@ class FriendsListTableViewController: UITableViewController {
         view.tintColor = AppAppearence.backgroundColor
     }
     
+    private func configureSearchBar() {
+        navigationItem.searchController = searchController
+    }
+}
+
+extension FriendsListTableViewController: UISearchBarDelegate {
+    //отрабатывает каждый раз, когда происходит модификация внутри searchBar
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print(searchText)
+    }
+    
+    //отработает при нажатии на кнопку поиска
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        //окончание редактирования. Позволяет скрыть клавиатуру
+        view.endEditing(true)
+    }
 }
