@@ -34,6 +34,7 @@ class FriendsListTableViewController: UITableViewController {
    
     //создание секции, применимой только к друзьям
     var friendsSection = [Sections<FriendModel>]()
+    var customRefreshControl = UIRefreshControl()
     let searchController = UISearchController()
 
     override func viewDidLoad() {
@@ -42,8 +43,8 @@ class FriendsListTableViewController: UITableViewController {
         updateNavigationBar()
         configureSections()
         configureSearchBar()
+        configureRefreshControl()
         searchController.searchBar.delegate = self
-
     }
     
     //отображение секции
@@ -109,9 +110,18 @@ class FriendsListTableViewController: UITableViewController {
         navigationItem.searchController = searchController
     }
     
-    
+    private func configureRefreshControl() {
+        
+        tableView.addSubview(customRefreshControl)
+
     }
     
+    @objc private func startRefreshing() {
+        
+    }
+    
+    @objc private func finishRefreshing() {
+        
     }
 }
 
