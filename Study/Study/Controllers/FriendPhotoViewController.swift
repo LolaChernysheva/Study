@@ -21,6 +21,7 @@ class FriendPhotoViewController: UIViewController, UICollectionViewDelegate, UIC
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		initialize()
+        updateNavigationItem()
 		collectionView?.delegate = self
 		collectionView?.dataSource = self
 	}
@@ -64,4 +65,10 @@ class FriendPhotoViewController: UIViewController, UICollectionViewDelegate, UIC
 			maker.bottom.equalToSuperview()
 		}
 	}
+    
+    private func updateNavigationItem() {
+        let backItem = UIBarButtonItem()
+        backItem.title = ""
+        navigationController?.navigationBar.topItem?.backBarButtonItem = backItem
+    }
 }
