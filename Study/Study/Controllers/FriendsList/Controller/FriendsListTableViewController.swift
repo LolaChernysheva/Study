@@ -111,19 +111,19 @@ class FriendsListTableViewController: UITableViewController {
     }
     
     private func configureRefreshControl() {
-        
+        customRefreshControl.addTarget(self, action: #selector(refreshTable), for: .valueChanged)
         tableView.addSubview(customRefreshControl)
+    }
+    
+    @objc private func refreshTable() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.customRefreshControl.endRefreshing()
+        }
+    }
 
-    }
-    
-    @objc private func startRefreshing() {
-        
-    }
-    
-    @objc private func finishRefreshing() {
-        
-    }
 }
+
+//MARK:-UISearchBarDelegate
 
 extension FriendsListTableViewController: UISearchBarDelegate {
     //отрабатывает каждый раз, когда происходит модификация внутри searchBar
