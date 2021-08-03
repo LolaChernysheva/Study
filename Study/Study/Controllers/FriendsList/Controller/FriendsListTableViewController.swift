@@ -87,7 +87,7 @@ class FriendsListTableViewController: UITableViewController {
     
     private func updateNavigationBar() {
         self.navigationItem.title = "Друзья"
-        self.navigationController?.navigationBar.barTintColor = AppAppearence.customBlue
+        //self.navigationController?.navigationBar.barTintColor = AppAppearence.customBlue
     }
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
