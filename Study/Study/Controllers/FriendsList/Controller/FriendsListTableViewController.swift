@@ -94,4 +94,8 @@ class FriendsListTableViewController: UITableViewController {
         self.navigationController?.navigationBar.barTintColor = AppAppearence.customBlue
     }
     
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        view.tintColor = AppAppearence.backgroundColor
+    }
+    
 }
