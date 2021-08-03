@@ -14,6 +14,7 @@ class GroupsListTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "Сообщества"
 		initialize()
 
     }
