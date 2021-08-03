@@ -109,7 +109,7 @@ extension FriendsListTableViewController: UISearchBarDelegate {
     //отрабатывает каждый раз, когда происходит модификация внутри searchBar
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         let friendsDictionary = Dictionary.init(grouping: friends.filter { (friend) -> Bool in
-            friend.name.contains(searchText)
+            return searchText.isEmpty ? true : friend.name.contains(searchText)
         }) { $0.name.prefix(1) }
         friendsSection = friendsDictionary.map { Sections(title: String($0.key), items: $0.value) }
         friendsSection.sort { $0.title < $1.title }
