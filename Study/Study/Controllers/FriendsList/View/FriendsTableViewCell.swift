@@ -39,6 +39,13 @@ class FriendsTableViewCell: UITableViewCell {
         friendAvatar.avatarImageView.contentMode = .scaleAspectFill
     }
     
+    // для переиспользования ячейки
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        //боковая стрелочка
+        self.accessoryType = .none
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
