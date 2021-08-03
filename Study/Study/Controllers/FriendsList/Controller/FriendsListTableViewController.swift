@@ -40,17 +40,10 @@ class FriendsListTableViewController: UITableViewController {
         super.viewDidLoad()
         self.tableView.register(FriendsTableViewCell.self, forCellReuseIdentifier: FriendsTableViewCell.friendsCellIdentifier)
         updateNavigationBar()
+        configureSections()
         configureSearchBar()
         searchController.searchBar.delegate = self
-        
-        //создание словаря из массива и группировкой по первому символу name
-        let friendsDictionary = Dictionary.init(grouping: friends) {
-            $0.name.prefix(1)
-        }
-        //конвертация словаря в секцию с заголовком и элементами
-        friendsSection = friendsDictionary.map { Sections(title: String($0.key), items: $0.value) }
-        //сортировка секций по алфавиту
-        friendsSection.sort { $0.title < $1.title }
+
     }
     
     //отображение секции
@@ -85,6 +78,17 @@ class FriendsListTableViewController: UITableViewController {
     //реализация боковой плашки с алфавитом
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         return friendsSection.map { $0.title }
+    }
+    
+    private func configureSections() {
+        //создание словаря из массива и группировкой по первому символу name
+        let friendsDictionary = Dictionary.init(grouping: friends) {
+            $0.name.prefix(1)
+        }
+        //конвертация словаря в секцию с заголовком и элементами
+        friendsSection = friendsDictionary.map { Sections(title: String($0.key), items: $0.value) }
+        //сортировка секций по алфавиту
+        friendsSection.sort { $0.title < $1.title }
     }
     
     private func updateNavigationBar() {
