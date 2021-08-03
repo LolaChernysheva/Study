@@ -7,6 +7,7 @@
 
 import Foundation
 
-struct Group {
+struct GroupModel {
 	var groupName: String
+    var avatarPath: String
 }

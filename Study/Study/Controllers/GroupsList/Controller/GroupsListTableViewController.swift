@@ -10,27 +10,73 @@ import UIKit
 class GroupsListTableViewController: UITableViewController {
 	
 	var searchGroupController = SearchGroupTableViewController()
-	public var groupsList = ["Group1", "Group2", "Group3"]
+    var groupsList = [GroupModel(groupName: "Pikabu", avatarPath: "persik1"),
+                      GroupModel(groupName: "Вконтакте", avatarPath: "persik2"),
+                      GroupModel(groupName: "Питер", avatarPath: "persik3"),
+                      GroupModel(groupName: "Москва", avatarPath: "persik1"),
+                      GroupModel(groupName: "Саратов", avatarPath: "persik2"),
+                      GroupModel(groupName: "Воронеж", avatarPath: "persik3"),
+                      GroupModel(groupName: "Ростов", avatarPath: "persik1"),
+                      GroupModel(groupName: "Севастополь", avatarPath: "persik2"),
+                      GroupModel(groupName: "Алушта", avatarPath: "persik3"),
+                      GroupModel(groupName: "Хабаровск", avatarPath: "persik1"),
+                      GroupModel(groupName: "Красноярск", avatarPath: "persik2"),
+                      GroupModel(groupName: "Калининград", avatarPath: "persik3"),
+                      GroupModel(groupName: "Днепропетровск", avatarPath: "persik1"),
+                      GroupModel(groupName: "Киров", avatarPath: "persik2"),
+                      GroupModel(groupName: "Вологда", avatarPath: "persik3"),
+                      GroupModel(groupName: "Анапа", avatarPath: "persik1"),
+                      GroupModel(groupName: "Абакан", avatarPath: "persik2"),
+                      GroupModel(groupName: "Нур-Султан", avatarPath: "persik3")]
+    
+    var groupsSection = [Sections<GroupModel>]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.register(GroupsTableViewCell.self, forCellReuseIdentifier: GroupsTableViewCell.groupsCellIdentifier)
         self.navigationItem.title = "Сообщества"
 		initialize()
+        configureSections()
 
     }
 
     // MARK: - Table view data source
 
+    //отображение секции
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return groupsSection.count
+    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-		return groupsList.count
+        return groupsSection[section].items.count
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return groupsSection[section].title
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
     }
 	
+    //реализация боковой плашки с алфавитом
+    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        return groupsSection.map { $0.title }
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        view.tintColor = AppAppearence.backgroundColor
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 60.0
+    }
+    
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = UITableViewCell()
-		cell.textLabel?.text = groupsList[indexPath.row]
-		cell.imageView?.image = UIImage(named: "VK")
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: GroupsTableViewCell.groupsCellIdentifier, for: indexPath) as? GroupsTableViewCell else { return UITableViewCell() }
+                
+        cell.groupName.text = groupsSection[indexPath.section].items[indexPath.row].groupName
+        cell.groupAvatar.avatarImageView.image = UIImage(named: groupsSection[indexPath.section].items[indexPath.row].avatarPath)
 		return cell
 	}
 	
@@ -42,7 +88,7 @@ class GroupsListTableViewController: UITableViewController {
 	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
 		switch editingStyle {
 		case .delete:
-			searchGroupController.groupToAdd.append(groupsList[indexPath.row])
+            searchGroupController.groupToAdd.append(groupsList[indexPath.row])
 			searchGroupController.tableView.reloadData()
 			groupsList.remove(at: indexPath.row)
 			tableView.reloadData()
@@ -51,6 +97,17 @@ class GroupsListTableViewController: UITableViewController {
 			return
 		}
 	}
+    
+    private func configureSections() {
+        //создание словаря из массива и группировкой по первому символу name
+        let groupsDictionary = Dictionary.init(grouping: groupsList) {
+            $0.groupName.prefix(1)
+        }
+        //конвертация словаря в секцию с заголовком и элементами
+        groupsSection = groupsDictionary.map { Sections(title: String($0.key), items: $0.value) }
+        //сортировка секций по алфавиту
+        groupsSection.sort { $0.title < $1.title }
+    }
 	
 	private func initialize() {
 		view.backgroundColor = AppAppearence.backgroundColor
