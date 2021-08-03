@@ -80,6 +80,14 @@ class FriendsListTableViewController: UITableViewController {
         return friendsSection.map { $0.title }
     }
     
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        view.tintColor = AppAppearence.backgroundColor
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 60.0
+    }
+    
     private func configureSections() {
         //создание словаря из массива и группировкой по первому символу name
         let friendsDictionary = Dictionary.init(grouping: friends) {
@@ -95,19 +103,15 @@ class FriendsListTableViewController: UITableViewController {
         self.navigationItem.title = "Друзья"
         //self.navigationController?.navigationBar.barTintColor = AppAppearence.customBlue
     }
-    
-    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        view.tintColor = AppAppearence.backgroundColor
-    }
-    
-    
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 60.0
-    }
-    
+
     private func configureSearchBar() {
         searchController.searchBar.placeholder = "Поиск"
         navigationItem.searchController = searchController
+    }
+    
+    
+    }
+    
     }
 }
 
