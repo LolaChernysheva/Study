@@ -5,36 +5,32 @@
 //  Created by Lola Chernysheva on 20.07.2021.
 //
 
-/* MARK:- TODO
- обработать переиспользование ячеек
- */
-
 import UIKit
 
 class FriendsListTableViewController: UITableViewController {
-    
-    var friends = [FriendModel(name: "Pavel", isOnline: true, avatarPath: "1"),
-                   FriendModel(name: "Lolita", isOnline: false, avatarPath: "2"),
-                   FriendModel(name: "Ivan", isOnline: true, avatarPath: "3"),
-                    FriendModel(name: "Maria", isOnline: true, avatarPath: "4"),
-                    FriendModel(name: "Olga", isOnline: false, avatarPath: "5"),
-                    FriendModel(name: "Svetlana", isOnline: true, avatarPath: "6"),
-                    FriendModel(name: "Mikhail", isOnline: false, avatarPath: "7"),
-                    FriendModel(name: "Kristina", isOnline: true, avatarPath: "1"),
-                    FriendModel(name: "Zinaida", isOnline: false, avatarPath: "2"),
-                    FriendModel(name: "Oksana", isOnline: false, avatarPath: "3"),
-                    FriendModel(name: "Sergey", isOnline: true, avatarPath: "4"),
-                    FriendModel(name: "Alexandr", isOnline: true, avatarPath: "5"),
-                    FriendModel(name: "Alexandra", isOnline: true, avatarPath: "6"),
-                    FriendModel(name: "Vadim", isOnline: false, avatarPath: "7"),
-                    FriendModel(name: "Nastya", isOnline: true, avatarPath: "1"),
-                    FriendModel(name: "Vera", isOnline: true, avatarPath: "2"),
-                    FriendModel(name: "Denis", isOnline: true, avatarPath: "3"),
-                    FriendModel(name: "Ilya", isOnline: true, avatarPath: "4"),
-                    FriendModel(name: "Alena", isOnline: true, avatarPath: "5"),
-                    FriendModel(name: "Ira", isOnline: true, avatarPath: "6"),
-                    FriendModel(name: "Maxim", isOnline: true, avatarPath: "7"),
-                    FriendModel(name: "Liza", isOnline: true, avatarPath: "1")]
+
+    var friends = [FriendModel(name: "Павел Чернышев", isOnline: true, avatarPath: "1"),
+                   FriendModel(name: "Лолита Чернышева", isOnline: false, avatarPath: "2"),
+                   FriendModel(name: "Иван Иванов", isOnline: true, avatarPath: "3"),
+                    FriendModel(name: "Мария Иванова", isOnline: true, avatarPath: "4"),
+                    FriendModel(name: "Ольга Петрова", isOnline: false, avatarPath: "5"),
+                    FriendModel(name: "Светлана Петрова", isOnline: true, avatarPath: "6"),
+                    FriendModel(name: "Михаил Иванов", isOnline: false, avatarPath: "7"),
+                    FriendModel(name: "Кристина Сидорова", isOnline: true, avatarPath: "1"),
+                    FriendModel(name: "Зинаида Зинина", isOnline: false, avatarPath: "2"),
+                    FriendModel(name: "Оксана Михайлова", isOnline: false, avatarPath: "3"),
+                    FriendModel(name: "Сергей Петров", isOnline: true, avatarPath: "4"),
+                    FriendModel(name: "Александр Чернышев", isOnline: true, avatarPath: "5"),
+                    FriendModel(name: "Александра Даниленко", isOnline: true, avatarPath: "6"),
+                    FriendModel(name: "Вадим Андреев", isOnline: false, avatarPath: "7"),
+                    FriendModel(name: "Аеастасия Александрова", isOnline: true, avatarPath: "1"),
+                    FriendModel(name: "Вера Игнатьева", isOnline: true, avatarPath: "2"),
+                    FriendModel(name: "Денис Воробьев", isOnline: true, avatarPath: "3"),
+                    FriendModel(name: "Илья Сергеев", isOnline: true, avatarPath: "4"),
+                    FriendModel(name: "Алена Иванова", isOnline: true, avatarPath: "5"),
+                    FriendModel(name: "Ирина Андреева", isOnline: true, avatarPath: "6"),
+                    FriendModel(name: "Максим Максимов", isOnline: true, avatarPath: "7"),
+                    FriendModel(name: "Елизавета Вадимова", isOnline: true, avatarPath: "1")]
    
     //создание секции, применимой только к друзьям
     var friendsSection = [Sections<FriendModel>]()
