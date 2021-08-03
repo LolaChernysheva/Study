@@ -89,6 +89,17 @@ class FriendsListTableViewController: UITableViewController {
         return 60.0
     }
     
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        var shareAction = UITableViewRowAction(style: .default, title: "Share") { (action, index) in
+            print("Shared \(index.section) \(index.row)")}
+        var forwardAction = UITableViewRowAction(style: .default, title: "Forward") { (action, index) in
+            print("Shared \(index.section) \(index.row)")
+        }
+        shareAction.backgroundColor = UIColor.yellow
+        forwardAction.backgroundColor = UIColor.magenta
+        return [shareAction, forwardAction]
+    }
+    
     private func configureSections() {
         //создание словаря из массива и группировкой по первому символу name
         let friendsDictionary = Dictionary.init(grouping: friends) {
