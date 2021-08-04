@@ -88,9 +88,11 @@ class GroupsListTableViewController: UITableViewController {
 	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
 		switch editingStyle {
 		case .delete:
-            searchGroupController.groupToAdd.append(groupsList[indexPath.row])
-			searchGroupController.tableView.reloadData()
+            //searchGroupController.groupToAdd.append(groupsList[indexPath.row])
+            searchGroupController.configureSections()
+            searchGroupController.tableView.reloadData()
 			groupsList.remove(at: indexPath.row)
+            configureSections()
 			tableView.reloadData()
 			
 		default:
@@ -98,7 +100,7 @@ class GroupsListTableViewController: UITableViewController {
 		}
 	}
     
-    private func configureSections() {
+    func configureSections() {
         //создание словаря из массива и группировкой по первому символу name
         let groupsDictionary = Dictionary.init(grouping: groupsList) {
             $0.groupName.prefix(1)
