@@ -91,13 +91,22 @@ class GroupsListTableViewController: UITableViewController {
 	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
 		switch editingStyle {
 		case .delete:
-            //searchGroupController.groupToAdd.append(groupsList[indexPath.row])
-            searchGroupController.configureSections()
-            searchGroupController.tableView.reloadData()
-			groupsList.remove(at: indexPath.row)
-            configureSections()
-			tableView.reloadData()
-			
+            
+            let removingElement = groupsSection[indexPath.section].items[indexPath.row]
+            searchGroupController.addElement(removingElement)
+            groupsSection[indexPath.section].items.remove(at: indexPath.row)
+
+            if  groupsSection[indexPath.section].items.count == 0 {
+                groupsSection.remove(at: indexPath.section)
+                tableView.reloadData()
+            } else {
+                tableView.reloadData()
+            }
+            
+            print("deleted \(indexPath.section) \(indexPath.row)")
+            print(groupsSection)
+            print(searchGroupController.groupsSection)
+
 		default:
 			return
 		}
