@@ -207,7 +207,7 @@ final class AuthViewController: UIViewController {
 		guard
 			let login = loginTextField.text,
 			let password = passwordTextField.text else { return false }
-		if login == "User" && password == "123" {
+		if login == "" && password == "" {
 			return true
 		} else {
 			return false
