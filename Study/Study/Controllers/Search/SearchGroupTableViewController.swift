@@ -15,10 +15,6 @@ class SearchGroupTableViewController: UITableViewController {
 
 	var groupListVC: GroupsListTableViewController?
 	public var groupToAdd = [GroupModel(groupName: "апро", avatarPath: "persik1"),
-//                             GroupModel(groupName: "паро", avatarPath: "persik2"),
-//                             GroupModel(groupName: "апри", avatarPath: "persik3"),
-//                             GroupModel(groupName: "спмит", avatarPath: "persik1"),
-//                             GroupModel(groupName: "аспми", avatarPath: "persik2"),
                              GroupModel(groupName: "сми", avatarPath: "persik3")]
     
     var groupsSection = [Sections<GroupModel>]()
