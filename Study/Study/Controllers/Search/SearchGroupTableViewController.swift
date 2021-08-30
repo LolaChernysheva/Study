@@ -5,16 +5,20 @@
 //  Created by admin on 28.07.2021.
 //
 
+//MARK:- TODO
+//в метод addElement добавить элемент не в исхожный массив, а в уже структурированный:
+// - определить секцию, положить туда элемент, обновить секцию или сам элемент
+
 import UIKit
 
 class SearchGroupTableViewController: UITableViewController {
 
 	var groupListVC: GroupsListTableViewController?
 	public var groupToAdd = [GroupModel(groupName: "апро", avatarPath: "persik1"),
-                             GroupModel(groupName: "паро", avatarPath: "persik2"),
-                             GroupModel(groupName: "апри", avatarPath: "persik3"),
-                             GroupModel(groupName: "спмит", avatarPath: "persik1"),
-                             GroupModel(groupName: "аспми", avatarPath: "persik2"),
+//                             GroupModel(groupName: "паро", avatarPath: "persik2"),
+//                             GroupModel(groupName: "апри", avatarPath: "persik3"),
+//                             GroupModel(groupName: "спмит", avatarPath: "persik1"),
+//                             GroupModel(groupName: "аспми", avatarPath: "persik2"),
                              GroupModel(groupName: "сми", avatarPath: "persik3")]
     
     var groupsSection = [Sections<GroupModel>]()
@@ -68,14 +72,14 @@ class SearchGroupTableViewController: UITableViewController {
 	
 	///добавление новой группы по клику на ячейку
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		guard let groupListVC = groupListVC else { return }
-		groupListVC.groupsList.append(groupToAdd[indexPath.row])
-		groupToAdd.remove(at: indexPath.row)
-        groupListVC.configureSections()
-        configureSections()
-		groupListVC.tableView.reloadData()
-		tableView.reloadData()
-		self.navigationController?.popViewController(animated: true)
+//		guard let groupListVC = groupListVC else { return }
+//		groupListVC.groupsList.append(groupToAdd[indexPath.row])
+//        groupListVC.tableView.reloadData()
+//		groupToAdd.remove(at: indexPath.row)
+//        groupListVC.configureSections()
+//        configureSections()
+//		tableView.reloadData()
+//		self.navigationController?.popViewController(animated: true)
 	}
 
 	private func initialize() {

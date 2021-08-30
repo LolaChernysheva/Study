@@ -5,27 +5,30 @@
 //  Created by Lola Chernysheva on 20.07.2021.
 //
 
+
+
 import UIKit
 
 class GroupsListTableViewController: UITableViewController {
 	
 	var searchGroupController = SearchGroupTableViewController()
+    
     var groupsList = [GroupModel(groupName: "Pikabu", avatarPath: "persik1"),
                       GroupModel(groupName: "Вконтакте", avatarPath: "persik2"),
                       GroupModel(groupName: "Питер", avatarPath: "persik3"),
-                      GroupModel(groupName: "Москва", avatarPath: "persik1"),
-                      GroupModel(groupName: "Саратов", avatarPath: "persik2"),
-                      GroupModel(groupName: "Воронеж", avatarPath: "persik3"),
-                      GroupModel(groupName: "Ростов", avatarPath: "persik1"),
-                      GroupModel(groupName: "Севастополь", avatarPath: "persik2"),
-                      GroupModel(groupName: "Алушта", avatarPath: "persik3"),
-                      GroupModel(groupName: "Хабаровск", avatarPath: "persik1"),
-                      GroupModel(groupName: "Красноярск", avatarPath: "persik2"),
-                      GroupModel(groupName: "Калининград", avatarPath: "persik3"),
-                      GroupModel(groupName: "Днепропетровск", avatarPath: "persik1"),
-                      GroupModel(groupName: "Киров", avatarPath: "persik2"),
-                      GroupModel(groupName: "Вологда", avatarPath: "persik3"),
-                      GroupModel(groupName: "Анапа", avatarPath: "persik1"),
+//                      GroupModel(groupName: "Москва", avatarPath: "persik1"),
+//                      GroupModel(groupName: "Саратов", avatarPath: "persik2"),
+//                      GroupModel(groupName: "Воронеж", avatarPath: "persik3"),
+//                      GroupModel(groupName: "Ростов", avatarPath: "persik1"),
+//                      GroupModel(groupName: "Севастополь", avatarPath: "persik2"),
+//                      GroupModel(groupName: "Алушта", avatarPath: "persik3"),
+//                      GroupModel(groupName: "Хабаровск", avatarPath: "persik1"),
+//                      GroupModel(groupName: "Красноярск", avatarPath: "persik2"),
+//                      GroupModel(groupName: "Калининград", avatarPath: "persik3"),
+//                      GroupModel(groupName: "Днепропетровск", avatarPath: "persik1"),
+//                      GroupModel(groupName: "Киров", avatarPath: "persik2"),
+//                      GroupModel(groupName: "Вологда", avatarPath: "persik3"),
+//                      GroupModel(groupName: "Анапа", avatarPath: "persik1"),
                       GroupModel(groupName: "Абакан", avatarPath: "persik2"),
                       GroupModel(groupName: "Нур-Султан", avatarPath: "persik3")]
     
@@ -99,7 +102,7 @@ class GroupsListTableViewController: UITableViewController {
 			return
 		}
 	}
-    
+
     func configureSections() {
         //создание словаря из массива и группировкой по первому символу name
         let groupsDictionary = Dictionary.init(grouping: groupsList) {
