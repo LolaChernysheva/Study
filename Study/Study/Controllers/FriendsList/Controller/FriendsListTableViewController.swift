@@ -47,6 +47,8 @@ class FriendsListTableViewController: UITableViewController {
         searchController.searchBar.delegate = self
     }
     
+    //MARK: - public
+    
     //отображение секции
     override func numberOfSections(in tableView: UITableView) -> Int {
         return friendsSection.count
@@ -99,6 +101,8 @@ class FriendsListTableViewController: UITableViewController {
         forwardAction.backgroundColor = UIColor.magenta
         return [shareAction, forwardAction]
     }
+    
+    //MARK: - private
     
     private func configureSections() {
         //создание словаря из массива и группировкой по первому символу name
