@@ -11,7 +11,7 @@ import UIKit
 
 class GroupsListTableViewController: UITableViewController {
 	
-	var searchGroupController = SearchGroupTableViewController()
+	lazy var searchGroupController = SearchGroupTableViewController()
     
     var groupsList = [GroupModel(groupName: "Pikabu", avatarPath: "persik1"),
                       GroupModel(groupName: "Вконтакте", avatarPath: "persik2"),
