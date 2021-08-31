@@ -122,6 +122,12 @@ class GroupsListTableViewController: UITableViewController {
         //сортировка секций по алфавиту
         groupsSection.sort { $0.title < $1.title }
     }
+    
+    func addElement(_ element: GroupModel) {
+        groupsList.append(element)
+        configureSections()
+        tableView.reloadData()
+    }
 	
 	private func initialize() {
 		view.backgroundColor = AppAppearence.backgroundColor

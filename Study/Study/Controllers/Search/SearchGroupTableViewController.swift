@@ -13,7 +13,7 @@ import UIKit
 
 class SearchGroupTableViewController: UITableViewController {
 
-	var groupListVC: GroupsListTableViewController?
+	lazy var groupListVC = GroupsListTableViewController()
 	public var groupToAdd = [GroupModel(groupName: "апро", avatarPath: "persik1"),
                              GroupModel(groupName: "сми", avatarPath: "persik3")]
     
@@ -66,16 +66,20 @@ class SearchGroupTableViewController: UITableViewController {
 		return cell
 	}
 	
-	///добавление новой группы по клику на ячейку
+	//добавление новой группы по клику на ячейку
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//		guard let groupListVC = groupListVC else { return }
-//		groupListVC.groupsList.append(groupToAdd[indexPath.row])
-//        groupListVC.tableView.reloadData()
-//		groupToAdd.remove(at: indexPath.row)
-//        groupListVC.configureSections()
-//        configureSections()
-//		tableView.reloadData()
-//		self.navigationController?.popViewController(animated: true)
+        let removingElement = groupsSection[indexPath.section].items[indexPath.row]
+        groupListVC.addElement(removingElement)
+        groupsSection[indexPath.section].items.remove(at: indexPath.row)
+
+        if  groupsSection[indexPath.section].items.count == 0 {
+            groupsSection.remove(at: indexPath.section)
+            tableView.reloadData()
+            self.navigationController?.popViewController(animated: true)
+        } else {
+            tableView.reloadData()
+            self.navigationController?.popViewController(animated: true)
+        }
 	}
 
 	private func initialize() {
