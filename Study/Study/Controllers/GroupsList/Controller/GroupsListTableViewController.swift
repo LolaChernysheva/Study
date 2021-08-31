@@ -34,6 +34,8 @@ class GroupsListTableViewController: UITableViewController {
     
     var groupsSection = [Sections<GroupModel>]()
 
+    //MARK: - Life cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(GroupsTableViewCell.self, forCellReuseIdentifier: GroupsTableViewCell.groupsCellIdentifier)
@@ -43,7 +45,7 @@ class GroupsListTableViewController: UITableViewController {
 
     }
 
-    // MARK: - Table view data source
+    // MARK: - Table view
 
     //отображение секции
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -91,7 +93,6 @@ class GroupsListTableViewController: UITableViewController {
 	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
 		switch editingStyle {
 		case .delete:
-            
             let removingElement = groupsSection[indexPath.section].items[indexPath.row]
             searchGroupController.addElement(removingElement)
             groupsSection[indexPath.section].items.remove(at: indexPath.row)
@@ -102,15 +103,12 @@ class GroupsListTableViewController: UITableViewController {
             } else {
                 tableView.reloadData()
             }
-            
-            print("deleted \(indexPath.section) \(indexPath.row)")
-            print(groupsSection)
-            print(searchGroupController.groupsSection)
-
 		default:
 			return
 		}
 	}
+    
+    //MARK: - public
 
     func configureSections() {
         //создание словаря из массива и группировкой по первому символу name
@@ -129,12 +127,13 @@ class GroupsListTableViewController: UITableViewController {
         tableView.reloadData()
     }
 	
+     //MARK: - private
+    
 	private func initialize() {
 		view.backgroundColor = AppAppearence.backgroundColor
 		self.modalPresentationStyle = .fullScreen
 		let rightButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(goToSearchGroupVC))
 		self.navigationItem.rightBarButtonItem = rightButton
-		
 	}
 	
 	//переход на экран поиска
