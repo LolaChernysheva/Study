@@ -27,6 +27,7 @@ class SearchGroupTableViewController: UITableViewController {
 		initialize()
         configureSections()
         configureSearchBar()
+        updateNavigationBar()
         searchController.searchBar.delegate = self
 
     }
@@ -94,6 +95,14 @@ class SearchGroupTableViewController: UITableViewController {
     private func configureSearchBar() {
         searchController.searchBar.placeholder = "Поиск"
         navigationItem.searchController = searchController
+    }
+    
+    private func updateNavigationBar() {
+        let backItem = UIBarButtonItem()
+        backItem.title = ""
+        navigationController?.navigationBar.topItem?.backBarButtonItem = backItem
+        self.navigationItem.title = "Поиск"
+        //self.navigationController?.navigationBar.barTintColor = AppAppearence.customBlue
     }
     
     func configureSections() {

@@ -116,7 +116,10 @@ class FriendsListTableViewController: UITableViewController {
     }
     
     private func updateNavigationBar() {
+        let backItem = UIBarButtonItem()
+        backItem.title = ""
         self.navigationItem.title = "Друзья"
+        navigationController?.navigationBar.topItem?.backBarButtonItem = backItem
         //self.navigationController?.navigationBar.barTintColor = AppAppearence.customBlue
     }
 
