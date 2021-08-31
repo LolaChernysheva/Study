@@ -19,12 +19,15 @@ class SearchGroupTableViewController: UITableViewController {
                              GroupModel(groupName: "сми", avatarPath: "persik3")]
     
     var groupsSection = [Sections<GroupModel>]()
+    let searchController = UISearchController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(GroupsTableViewCell.self, forCellReuseIdentifier: GroupsTableViewCell.groupsCellIdentifier)
 		initialize()
         configureSections()
+        configureSearchBar()
+        searchController.searchBar.delegate = self
 
     }
 
@@ -88,6 +91,11 @@ class SearchGroupTableViewController: UITableViewController {
 		view.backgroundColor = AppAppearence.backgroundColor
 	}
     
+    private func configureSearchBar() {
+        searchController.searchBar.placeholder = "Поиск"
+        navigationItem.searchController = searchController
+    }
+    
     func configureSections() {
         //создание словаря из массива и группировкой по первому символу name
         let groupsDictionary = Dictionary.init(grouping: groupToAdd) {
@@ -103,5 +111,26 @@ class SearchGroupTableViewController: UITableViewController {
         groupToAdd.append(element)
         configureSections()
         tableView.reloadData()
+    }
+}
+
+//MARK:-UISearchBarDelegate
+
+extension SearchGroupTableViewController: UISearchBarDelegate {
+    //отрабатывает каждый раз, когда происходит модификация внутри searchBar
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        let groupsDictionary = Dictionary.init(grouping: groupToAdd.filter { (group) -> Bool in
+            return searchText.isEmpty ? true : group.groupName.lowercased().contains(searchText.lowercased())
+        }) { $0.groupName.prefix(1) }
+        groupsSection = groupsDictionary.map { Sections(title: String($0.key), items: $0.value) }
+        groupsSection.sort { $0.title < $1.title }
+        tableView.reloadData()
+        print(searchText)
+    }
+    
+    //отработает при нажатии на кнопку поиска
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        //окончание редактирования. Позволяет скрыть клавиатуру
+        view.endEditing(true)
     }
 }
