@@ -26,11 +26,16 @@ class TabbarController: UITabBarController, UITabBarControllerDelegate {
 		let groupsIcon = UITabBarItem(title: "Сообщества",
 									  image: UIImage(named: "groups.png"),
 									  selectedImage: UIImage(named: "groups.png"))
+        let newsTableViewController = NewsTableViewController()
+        let newsIcon = UITabBarItem(title: "Новости",
+                                    image: UIImage(named: "homePage"),
+                                    selectedImage: UIImage(named: "homePage"))
 		//let controllers = [friendsTableViewController, groupsTableViewController]
-		let controllers = [UINavigationController(rootViewController: friendsTableViewController), UINavigationController(rootViewController: groupsTableViewController)]
+		let controllers = [UINavigationController(rootViewController: friendsTableViewController), UINavigationController(rootViewController: groupsTableViewController), UINavigationController(rootViewController: newsTableViewController)]
 		
 		friendsTableViewController.tabBarItem = friendsIcon
 		groupsTableViewController.tabBarItem = groupsIcon
+        newsTableViewController.tabBarItem = newsIcon
 		self.viewControllers = controllers
 		
 	}
