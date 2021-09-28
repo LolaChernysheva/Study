@@ -24,7 +24,10 @@ class NewsTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        newsPhotos.delegate = self
+        newsPhotos.dataSource = self
         initialize()
+        collectionInitialize()
     }
     
     required init?(coder: NSCoder) {
@@ -35,6 +38,7 @@ class NewsTableViewCell: UITableViewCell {
     
     private func initialize() {
         
+        newsPhotos.backgroundColor = UIColor.yellow
         avatarView.avatarImageView.contentMode = .scaleAspectFill
         nameLabel.numberOfLines = 0
         dateLabel.numberOfLines = 0
@@ -70,7 +74,58 @@ class NewsTableViewCell: UITableViewCell {
             maker.top.equalTo(avatarView).inset(60)
             maker.leading.equalToSuperview().inset(5)
             maker.trailing.equalToSuperview().inset(5)
+            maker.bottom.equalTo(newsPhotos).inset(5)
+        }
+        newsPhotos.snp.makeConstraints { (maker) in
+            maker.trailing.equalToSuperview().inset(5)
+            maker.leading.equalToSuperview().inset(5)
             maker.bottom.equalToSuperview().inset(5)
         }
     }
+    
+    private func collectionInitialize() {
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        newsPhotos = UICollectionView(frame: self.bounds, collectionViewLayout: layout)
+        newsPhotos.collectionViewLayout = layout
+        newsPhotos.showsHorizontalScrollIndicator = false
+        newsPhotos.isPagingEnabled = true
+        newsPhotos.register(UICollectionViewCell.self, forCellWithReuseIdentifier: NewsPhotoCollectionViewCell.newsPhotoCellIdentifier)
+    }
+}
+
+extension NewsTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+   
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 0
+    }
+    
+   
+ 
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell: NewsPhotoCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: NewsPhotoCollectionViewCell.newsPhotoCellIdentifier, for: indexPath) as! NewsPhotoCollectionViewCell
+        
+        return cell
+    }
+
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        return CGSize(width: kPhotoWidth, height: kPhotoHeight)
+//    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt  section: Int) -> UIEdgeInsets {
+        
+        return UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
+        
+    }
+
+//    func collectionView(_ collectionView: UICollectionView, layout > collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+//        return 0.0
+//    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0.0
+    }
+    
 }
