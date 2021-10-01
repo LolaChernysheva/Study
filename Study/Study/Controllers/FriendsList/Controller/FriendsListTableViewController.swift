@@ -92,9 +92,9 @@ class FriendsListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        var shareAction = UITableViewRowAction(style: .default, title: "Share") { (action, index) in
+        let shareAction = UITableViewRowAction(style: .default, title: "Share") { (action, index) in
             print("Shared \(index.section) \(index.row)")}
-        var forwardAction = UITableViewRowAction(style: .default, title: "Forward") { (action, index) in
+        let forwardAction = UITableViewRowAction(style: .default, title: "Forward") { (action, index) in
             print("Shared \(index.section) \(index.row)")
         }
         shareAction.backgroundColor = UIColor.yellow
