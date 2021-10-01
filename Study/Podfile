@@ -6,7 +6,8 @@ target 'Study' do
   use_frameworks!
 
   # Pods for Study
-pod 'SnapKit' 
+pod 'SnapKit'
+pod "VK-ios-sdk" 
 
   target 'StudyTests' do
     inherit! :search_paths

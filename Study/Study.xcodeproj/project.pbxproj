@@ -93,6 +93,7 @@
 		F38DBD442707423B00FFFA0F /* NewsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
 		F38DBD462707423B00FFFA0F /* NewsPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		F38DBD472707423B00FFFA0F /* NewsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
+		F38DBD4C2707698300FFFA0F /* VK_ios_sdk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VK_ios_sdk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,6 +259,7 @@
 		D25D65A2E0CA7C6FAC5936D8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F38DBD4C2707698300FFFA0F /* VK_ios_sdk.framework */,
 				2938D86AADCB7148DCFBEE47 /* Pods_Study.framework */,
 				03A6E03D4FD37CDF8179B6C1 /* Pods_Study_StudyUITests.framework */,
 				8478001161ECBF304654FCE6 /* Pods_StudyTests.framework */,
