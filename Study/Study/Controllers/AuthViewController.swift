@@ -20,6 +20,7 @@ final class AuthViewController: UIViewController {
 	private let signInButton = UIButton(type: .system)
 	private let signUpButton = UIButton(type: .system)
 	private let passwordTextField = UITextField()
+    private var authService: AuthService?
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +47,7 @@ final class AuthViewController: UIViewController {
 	}
 	
 	private func initialize() {
+        authService = SceneDelegate.shared().authService
 		view.backgroundColor = AppAppearence.backgroundColor
 		view.addSubview(scrollView)
 		scrollView.snp.makeConstraints { maker in
@@ -129,7 +131,7 @@ final class AuthViewController: UIViewController {
 							   action: #selector(goToSecondViewController),
 							   for:.touchUpInside)
 		signUpButton.addTarget(self,
-							   action: #selector(goToSecondViewController),
+							   action: #selector(goToAuthVkSdk),
 							   for:.touchUpInside)
 		
 	}
@@ -201,6 +203,10 @@ final class AuthViewController: UIViewController {
 	@objc private func hideKeyboard() {
 		view.endEditing(true)
 	}
+    
+    @objc func goToAuthVkSdk() {
+        authService?.wakeUpSession()
+    }
 	
 	//проверка корректоности логина и пароля
 	private func checkUserData() -> Bool {
