@@ -9,19 +9,15 @@ import UIKit
 
 class NewsFeedViewController: UIViewController {
     
-    private let networkService: Networking = NetworkService()
+    private var fetcher: DataFetcher = NetworkDataFetcher(networking: NetworkService())
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let params = ["filters": "post,photo"]
-        networkService.request(path: API.newsFeed, params: params) { (data, error) in
-            if let error = error {
-                print("Error received requesting data: \(error.localizedDescription)")
+        fetcher.getFeed { (feedResponse) in
+            guard let feedResponse = feedResponse else { return }
+            feedResponse.items.map { (feedItem) in
+                print(feedItem.date)
             }
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            guard let data = data else { return }
-            let response = try? decoder.decode(FeedResponseWrapped.self, from: data)
         }
     }
 }

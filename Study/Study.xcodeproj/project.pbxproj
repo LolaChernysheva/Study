@@ -30,6 +30,7 @@
 		E4BE62B91C3652EC020631A3 /* Pods_StudyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8478001161ECBF304654FCE6 /* Pods_StudyTests.framework */; };
 		E96022E1DC6CFBF3C443CAAD /* Pods_Study.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2938D86AADCB7148DCFBEE47 /* Pods_Study.framework */; };
 		F35A03F327187BAD0033AB0B /* FeedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35A03F227187BAD0033AB0B /* FeedResponse.swift */; };
+		F35A03F52718B1390033AB0B /* NetworkDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35A03F42718B1390033AB0B /* NetworkDataFetcher.swift */; };
 		F38DBD3E27073D6800FFFA0F /* GroupsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38DBD3D27073D6800FFFA0F /* GroupsTableViewCell.swift */; };
 		F38DBD5327078BC600FFFA0F /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38DBD5227078BC600FFFA0F /* AuthService.swift */; };
 		F38DBD59270F04D400FFFA0F /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38DBD58270F04D400FFFA0F /* NetworkService.swift */; };
@@ -90,6 +91,7 @@
 		D353745826B486C500EEBB37 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AvatarView.swift; path = Study/Controllers/AvatarView.swift; sourceTree = SOURCE_ROOT; };
 		D353745A26B488E300EEBB37 /* FriendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FriendsTableViewCell.swift; path = Study/Controllers/FriendsList/View/FriendsTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		F35A03F227187BAD0033AB0B /* FeedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedResponse.swift; sourceTree = "<group>"; };
+		F35A03F42718B1390033AB0B /* NetworkDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataFetcher.swift; sourceTree = "<group>"; };
 		F38DBD3D27073D6800FFFA0F /* GroupsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsTableViewCell.swift; sourceTree = "<group>"; };
 		F38DBD4C2707698300FFFA0F /* VK_ios_sdk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VK_ios_sdk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F38DBD5227078BC600FFFA0F /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
@@ -395,6 +397,7 @@
 				F38DBD5227078BC600FFFA0F /* AuthService.swift */,
 				F38DBD58270F04D400FFFA0F /* NetworkService.swift */,
 				F38DBD5A270F063A00FFFA0F /* API.swift */,
+				F35A03F42718B1390033AB0B /* NetworkDataFetcher.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -650,6 +653,7 @@
 				84072FAD26A6C6A400B0A9B8 /* GroupsListTableViewController.swift in Sources */,
 				84072FAB26A6C66C00B0A9B8 /* FriendsListTableViewController.swift in Sources */,
 				F38DBD5B270F063A00FFFA0F /* API.swift in Sources */,
+				F35A03F52718B1390033AB0B /* NetworkDataFetcher.swift in Sources */,
 				84072FA926A59F8D00B0A9B8 /* AuthViewController.swift in Sources */,
 				D34271C726B81736007B2F4F /* Sections.swift in Sources */,
 				F38DBD5D270F0CF700FFFA0F /* NewsFeedViewController.swift in Sources */,
