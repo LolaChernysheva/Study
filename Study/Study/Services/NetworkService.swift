@@ -11,6 +11,7 @@
 import Foundation
 
 protocol Networking {
+    //создает url из path и параметров
     func request(path: String, params: [String: String], completion: @escaping (Data?, Error?) -> Void)
 }
 
