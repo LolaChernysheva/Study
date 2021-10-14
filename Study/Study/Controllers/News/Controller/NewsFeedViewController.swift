@@ -20,7 +20,6 @@ class NewsFeedViewController: UIViewController {
             }
             guard let data = data else { return }
             let json = try? JSONSerialization.jsonObject(with: data, options: [])
-            print("json: \(json)")
         }
     }
 }
