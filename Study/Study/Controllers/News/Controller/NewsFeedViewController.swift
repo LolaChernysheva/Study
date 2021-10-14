@@ -18,8 +18,10 @@ class NewsFeedViewController: UIViewController {
             if let error = error {
                 print("Error received requesting data: \(error.localizedDescription)")
             }
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
             guard let data = data else { return }
-            let json = try? JSONSerialization.jsonObject(with: data, options: [])
+            let response = try? decoder.decode(FeedResponseWrapped.self, from: data)
         }
     }
 }
