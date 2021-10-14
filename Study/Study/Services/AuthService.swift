@@ -24,7 +24,7 @@ final class AuthService: NSObject, VKSdkDelegate, VKSdkUIDelegate {
     weak var authServiceDelegate: AuthServiceDelegate?
     
     var token: String? {
-        return VKSdk.accessToken().accessToken
+        return VKSdk.accessToken()?.accessToken
     }
     
     override init() {
@@ -37,8 +37,8 @@ final class AuthService: NSObject, VKSdkDelegate, VKSdkUIDelegate {
     //пытается извлечь токен из хранилища и проверяет, разрешено ли приложению использовать токен доступа пользователям
     func wakeUpSession() {
         //список доступных прав доступа для токена пользователя
-        let scope = ["offline"]
-        VKSdk.wakeUpSession(scope) { state, error in
+        let scope = ["offline" ,"wall", "friends"]
+        VKSdk.wakeUpSession(scope) { [authServiceDelegate] (state, error) in
             switch state {
             case .initialized:
                 print("initialized")
@@ -50,13 +50,15 @@ final class AuthService: NSObject, VKSdkDelegate, VKSdkUIDelegate {
             }
         }
     }
-    
+
     //MARK: VKSdkDelegate
     
     //уведомляет о завершении авторизации
     func vkSdkAccessAuthorizationFinished(with result: VKAuthorizationResult!) {
         print(#function)
+        if result.token != nil {
         authServiceDelegate?.authServiceSignIn()
+        }
     }
     
     func vkSdkUserAuthorizationFailed() {

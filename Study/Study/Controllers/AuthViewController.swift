@@ -127,9 +127,13 @@ final class AuthViewController: UIViewController {
 		signInButton.addTarget(self,
 							   action: #selector(buttonPressed),
 							   for:.touchUpInside)
+        signInButton.addTarget(self,
+                                      action: #selector(goToAuthVkSdk),
+                                      for:.touchUpInside)
 		signInButton.addTarget(self,
 							   action: #selector(goToSecondViewController),
 							   for:.touchUpInside)
+       
 		signUpButton.addTarget(self,
 							   action: #selector(goToAuthVkSdk),
 							   for:.touchUpInside)

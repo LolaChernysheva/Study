@@ -9,12 +9,18 @@ import UIKit
 
 class NewsFeedViewController: UIViewController {
     
-    private let networkService = NetworkService()
+    private let networkService: Networking = NetworkService()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        networkService.getFeed() 
-
-        // Do any additional setup after loading the view.
+        let params = ["filters": "post,photo"]
+        networkService.request(path: API.newsFeed, params: params) { (data, error) in
+            if let error = error {
+                print("Error received requesting data: \(error.localizedDescription)")
+            }
+            guard let data = data else { return }
+            let json = try? JSONSerialization.jsonObject(with: data, options: [])
+            print("json: \(json)")
+        }
     }
 }
