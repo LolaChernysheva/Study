@@ -44,6 +44,8 @@
 		F3DF1EED2719AD2000142D02 /* NewsFeedInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DF1EE62719AD2000142D02 /* NewsFeedInteractor.swift */; };
 		F3DF1EEE2719AD2000142D02 /* NewsFeedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3DF1EE72719AD2000142D02 /* NewsFeedViewController.xib */; };
 		F3DF1EF0271EEBA800142D02 /* NewsFeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DF1EEF271EEBA800142D02 /* NewsFeedTableViewCell.swift */; };
+		F3DF1EF22729CBD300142D02 /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DF1EF12729CBD300142D02 /* Constraints.swift */; };
+		F3DF1EF42729CE1800142D02 /* NewsFeedCellLayoutCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DF1EF32729CE1800142D02 /* NewsFeedCellLayoutCalculator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +117,8 @@
 		F3DF1EE62719AD2000142D02 /* NewsFeedInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedInteractor.swift; sourceTree = "<group>"; };
 		F3DF1EE72719AD2000142D02 /* NewsFeedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsFeedViewController.xib; sourceTree = "<group>"; };
 		F3DF1EEF271EEBA800142D02 /* NewsFeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedTableViewCell.swift; sourceTree = "<group>"; };
+		F3DF1EF12729CBD300142D02 /* Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
+		F3DF1EF32729CE1800142D02 /* NewsFeedCellLayoutCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedCellLayoutCalculator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +183,7 @@
 				D34271C426B814E5007B2F4F /* Assets.xcassets */,
 				84072F7D26A58EA000B0A9B8 /* Info.plist */,
 				84072FB226A6F89500B0A9B8 /* CustomColors.swift */,
+				F3DF1EF12729CBD300142D02 /* Constraints.swift */,
 			);
 			path = Study;
 			sourceTree = "<group>";
@@ -381,6 +386,7 @@
 				F38DBD412707423B00FFFA0F /* Controller */,
 				F38DBD432707423B00FFFA0F /* Model */,
 				F38DBD452707423B00FFFA0F /* View */,
+				F3DF1EF32729CE1800142D02 /* NewsFeedCellLayoutCalculator.swift */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -677,6 +683,7 @@
 				D353745626B467B600EEBB37 /* SearchGroupTableViewController.swift in Sources */,
 				84072FAF26A6CACD00B0A9B8 /* SignUpViewController.swift in Sources */,
 				D353745326B467AC00EEBB37 /* GroupModel.swift in Sources */,
+				F3DF1EF42729CE1800142D02 /* NewsFeedCellLayoutCalculator.swift in Sources */,
 				D353745B26B488E300EEBB37 /* FriendsTableViewCell.swift in Sources */,
 				F38DBD5327078BC600FFFA0F /* AuthService.swift in Sources */,
 				84072F7026A58E9C00B0A9B8 /* AppDelegate.swift in Sources */,
@@ -694,6 +701,7 @@
 				F3DF1EED2719AD2000142D02 /* NewsFeedInteractor.swift in Sources */,
 				84072FA926A59F8D00B0A9B8 /* AuthViewController.swift in Sources */,
 				F3DF1EEC2719AD2000142D02 /* NewsFeedViewController.swift in Sources */,
+				F3DF1EF22729CBD300142D02 /* Constraints.swift in Sources */,
 				D34271C726B81736007B2F4F /* Sections.swift in Sources */,
 				F38DBD5D270F0CF700FFFA0F /* FeedViewController.swift in Sources */,
 				84072F7226A58E9C00B0A9B8 /* SceneDelegate.swift in Sources */,
