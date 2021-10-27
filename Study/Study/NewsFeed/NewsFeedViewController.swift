@@ -59,6 +59,8 @@ class NewsFeedViewController: UIViewController, NewsFeedDisplayLogic {
         self.tableView.dataSource = self
         
         self.setUpConstraints()
+        
+        tableView.register(NewsFeedTableViewCell.self, forCellReuseIdentifier: NewsFeedTableViewCell.reusedId)
     }
     
     func displayData(viewModel: NewsFeed.Model.ViewModel.ViewModelData) {
@@ -78,12 +80,12 @@ class NewsFeedViewController: UIViewController, NewsFeedDisplayLogic {
 
 extension NewsFeedViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: NewsFeedTableViewCell.reusedId, for: indexPath) as! NewsFeedTableViewCell
         cell.textLabel?.text = "index: \(indexPath.row)"
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return 212
     }
 }
