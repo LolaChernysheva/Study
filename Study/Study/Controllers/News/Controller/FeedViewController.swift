@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NewsFeedViewController: UIViewController {
+class FeedViewController: UIViewController {
     
     private var fetcher: DataFetcher = NetworkDataFetcher(networking: NetworkService())
 

@@ -26,7 +26,9 @@ class TabbarController: UITabBarController, UITabBarControllerDelegate {
 		let groupsIcon = UITabBarItem(title: "Сообщества",
 									  image: UIImage(named: "groups.png"),
 									  selectedImage: UIImage(named: "groups.png"))
+        //let newsFeedViewController = FeedViewController()
         let newsFeedViewController = NewsFeedViewController()
+        
         let newsIcon = UITabBarItem(title: "Новости",
                                     image: UIImage(named: "homePage"),
                                     selectedImage: UIImage(named: "homePage"))
