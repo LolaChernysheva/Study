@@ -7,6 +7,17 @@
 
 import UIKit
 
+protocol FeedCellViewModel {
+    var iconUrlString: String { get }
+    var name: String { get }
+    var date: String { get }
+    var text: String? { get }
+    var likes: String? { get }
+    var comments: String? { get }
+    var shares: String? { get }
+    var views: String? { get }
+}
+
 final class NewsFeedTableViewCell: UITableViewCell {
     
     static let reusedId = "NewsFeedTableViewCell"

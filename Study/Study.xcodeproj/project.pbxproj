@@ -47,6 +47,7 @@
 		F3DF1EF22729CBD300142D02 /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DF1EF12729CBD300142D02 /* Constraints.swift */; };
 		F3DF1EF42729CE1800142D02 /* NewsFeedCellLayoutCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DF1EF32729CE1800142D02 /* NewsFeedCellLayoutCalculator.swift */; };
 		F3DF1EF72729D20C00142D02 /* WebImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DF1EF62729D20C00142D02 /* WebImageView.swift */; };
+		F3DF1EF9272C354D00142D02 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DF1EF8272C354D00142D02 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +122,7 @@
 		F3DF1EF12729CBD300142D02 /* Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
 		F3DF1EF32729CE1800142D02 /* NewsFeedCellLayoutCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedCellLayoutCalculator.swift; sourceTree = "<group>"; };
 		F3DF1EF62729D20C00142D02 /* WebImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebImageView.swift; sourceTree = "<group>"; };
+		F3DF1EF8272C354D00142D02 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -447,6 +449,7 @@
 				84072FB226A6F89500B0A9B8 /* CustomColors.swift */,
 				F3DF1EF12729CBD300142D02 /* Constraints.swift */,
 				F3DF1EF62729D20C00142D02 /* WebImageView.swift */,
+				F3DF1EF8272C354D00142D02 /* Constants.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -712,6 +715,7 @@
 				F35A03F52718B1390033AB0B /* NetworkDataFetcher.swift in Sources */,
 				F3DF1EED2719AD2000142D02 /* NewsFeedInteractor.swift in Sources */,
 				84072FA926A59F8D00B0A9B8 /* AuthViewController.swift in Sources */,
+				F3DF1EF9272C354D00142D02 /* Constants.swift in Sources */,
 				F3DF1EEC2719AD2000142D02 /* NewsFeedViewController.swift in Sources */,
 				F3DF1EF22729CBD300142D02 /* Constraints.swift in Sources */,
 				D34271C726B81736007B2F4F /* Sections.swift in Sources */,
