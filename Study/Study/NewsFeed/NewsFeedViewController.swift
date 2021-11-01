@@ -19,6 +19,7 @@ class NewsFeedViewController: UIViewController, NewsFeedDisplayLogic {
     
     var interactor: NewsFeedBusinessLogic?
     var router: (NSObjectProtocol & NewsFeedRoutingLogic)?
+    private var feedViewModel = FeedViewModel.init(cells: [])
     
     // MARK: Object lifecycle
     
@@ -81,12 +82,13 @@ class NewsFeedViewController: UIViewController, NewsFeedDisplayLogic {
 extension NewsFeedViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: NewsFeedTableViewCell.reusedId, for: indexPath) as! NewsFeedTableViewCell
-        cell.textLabel?.text = "index: \(indexPath.row)"
+        let cellViewModel = feedViewModel.cells[indexPath.row]
+        cell.set(viewModel: cellViewModel)
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return feedViewModel.cells.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
