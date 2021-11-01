@@ -62,6 +62,7 @@ class NewsFeedViewController: UIViewController, NewsFeedDisplayLogic {
         self.setUpConstraints()
         
         tableView.register(NewsFeedTableViewCell.self, forCellReuseIdentifier: NewsFeedTableViewCell.reusedId)
+        interactor?.makeRequest(request: NewsFeed.Model.Request.RequestType.getNewsFeed)
     }
     
     func displayData(viewModel: NewsFeed.Model.ViewModel.ViewModelData) {
