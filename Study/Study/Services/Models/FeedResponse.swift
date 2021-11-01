@@ -42,5 +42,7 @@ struct Profile: Decodable {
 }
 
 struct Group: Decodable {
-    
+    let id: Int
+    let name: String
+    let photo100: String
 }
