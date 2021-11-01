@@ -35,7 +35,6 @@
 		F38DBD5327078BC600FFFA0F /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38DBD5227078BC600FFFA0F /* AuthService.swift */; };
 		F38DBD59270F04D400FFFA0F /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38DBD58270F04D400FFFA0F /* NetworkService.swift */; };
 		F38DBD5B270F063A00FFFA0F /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38DBD5A270F063A00FFFA0F /* API.swift */; };
-		F38DBD5D270F0CF700FFFA0F /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38DBD5C270F0CF700FFFA0F /* FeedViewController.swift */; };
 		F3DF1EE82719AD2000142D02 /* NewsFeedPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DF1EE12719AD2000142D02 /* NewsFeedPresenter.swift */; };
 		F3DF1EE92719AD2000142D02 /* NewsFeedWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DF1EE22719AD2000142D02 /* NewsFeedWorker.swift */; };
 		F3DF1EEA2719AD2000142D02 /* NewsFeedRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DF1EE32719AD2000142D02 /* NewsFeedRouter.swift */; };
@@ -110,7 +109,6 @@
 		F38DBD54270E425100FFFA0F /* VK_ios_sdk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VK_ios_sdk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F38DBD58270F04D400FFFA0F /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		F38DBD5A270F063A00FFFA0F /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
-		F38DBD5C270F0CF700FFFA0F /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		F3DF1EE12719AD2000142D02 /* NewsFeedPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedPresenter.swift; sourceTree = "<group>"; };
 		F3DF1EE22719AD2000142D02 /* NewsFeedWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedWorker.swift; sourceTree = "<group>"; };
 		F3DF1EE32719AD2000142D02 /* NewsFeedRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedRouter.swift; sourceTree = "<group>"; };
@@ -397,7 +395,6 @@
 		F38DBD412707423B00FFFA0F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				F38DBD5C270F0CF700FFFA0F /* FeedViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -719,7 +716,6 @@
 				F3DF1EEC2719AD2000142D02 /* NewsFeedViewController.swift in Sources */,
 				F3DF1EF22729CBD300142D02 /* Constraints.swift in Sources */,
 				D34271C726B81736007B2F4F /* Sections.swift in Sources */,
-				F38DBD5D270F0CF700FFFA0F /* FeedViewController.swift in Sources */,
 				84072F7226A58E9C00B0A9B8 /* SceneDelegate.swift in Sources */,
 				D353745226B467AC00EEBB37 /* FriendModel.swift in Sources */,
 				84072FB126A6D19200B0A9B8 /* TabbarController.swift in Sources */,
