@@ -29,5 +29,17 @@ class NewsFeedPresenter: NewsFeedPresentationLogic {
                                        shares: String(feedItem.reposts?.count ?? 0),
                                        views: String(feedItem.views?.count ?? 0))
     }
+    
+    private func profile(for sourceId: Int, profiles: [Profile], groups: [Group]) -> ProfileRepresentable? {
+        //определяем, что получаем: группу или пользователя
+        let profilesOrGroups: [ProfileRepresentable] = sourceId >= 0 ? profiles : groups
+        //возвращаем нормальный (положительный) знак для sourceId
+        let noramalSourceId = sourceId >= 0 ? sourceId : -sourceId
+        //получаем информацию о текущем посте
+        let profileRepresentable = profilesOrGroups.first { (myProfileRepresentable) -> Bool in
+            myProfileRepresentable.id == noramalSourceId
+        }
+        return profileRepresentable
+    }
   
 }
