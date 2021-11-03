@@ -13,16 +13,21 @@ protocol NewsFeedPresentationLogic {
 }
 
 class NewsFeedPresenter: NewsFeedPresentationLogic {
-  weak var viewController: NewsFeedDisplayLogic?
-  
-  func presentData(response: NewsFeed.Model.Response.ResponseType) {
-  
-  }
+    func presentData(response: NewsFeed.Model.Response.ResponseType) {
+        switch response {
+        case .presentNewsFeed(feed: let feed):
+            let cells = feed.items.map { (feedItem) in
+                cellViewModel(from: feedItem, profiles: feed.profiles, groups: feed.groups)
+            }
+            let feedViewModel = FeedViewModel.init(cells: cells)
+            viewController?.displayData(viewModel: NewsFeed.Model.ViewModel.ViewModelData.displayNewsFeed(feedViewModel: feedViewModel))
+        }
+    }
     
-    private func cellViewModel(from feedItem: FeedItem) -> FeedViewModel.Cell {
-        return FeedViewModel.Cell.init(iconUrlString: "",
-                                       name: "future name",
-                                       date: "future date",
+    private func cellViewModel(from feedItem: FeedItem, profiles: [Profile], groups: [Group]) -> FeedViewModel.Cell {
+        let profile = self.profile(for: feedItem.sourceId, profiles: profiles, groups: groups)
+        return FeedViewModel.Cell.init(iconUrlString: profile.photo,
+                                       name: profile.name,
                                        text: feedItem.text,
                                        likes: String(feedItem.likes?.count ?? 0),
                                        comments: String(feedItem.comments?.count ?? 0),
