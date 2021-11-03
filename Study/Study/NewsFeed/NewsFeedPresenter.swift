@@ -5,7 +5,8 @@
 //  Created by Лолита Чернышева on 15.10.2021.
 //  Copyright (c) 2021 ___ORGANIZATIONNAME___. All rights reserved.
 //
-
+//MARK: - todo
+//избавиться от опционала на 50 строке
 import UIKit
 
 protocol NewsFeedPresentationLogic {
@@ -47,7 +48,7 @@ class NewsFeedPresenter: NewsFeedPresentationLogic {
                                        views: String(feedItem.views?.count ?? 0))
     }
     
-    private func profile(for sourceId: Int, profiles: [Profile], groups: [Group]) -> ProfileRepresentable? {
+    private func profile(for sourceId: Int, profiles: [Profile], groups: [Group]) -> ProfileRepresentable {
         //определяем, что получаем: группу или пользователя
         let profilesOrGroups: [ProfileRepresentable] = sourceId >= 0 ? profiles : groups
         //возвращаем нормальный (положительный) знак для sourceId
@@ -56,7 +57,7 @@ class NewsFeedPresenter: NewsFeedPresentationLogic {
         let profileRepresentable = profilesOrGroups.first { (myProfileRepresentable) -> Bool in
             myProfileRepresentable.id == noramalSourceId
         }
-        return profileRepresentable
+        return profileRepresentable!
     }
-  
+    
 }
