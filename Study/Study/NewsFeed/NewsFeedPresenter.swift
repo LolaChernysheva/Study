@@ -9,7 +9,7 @@
 import UIKit
 
 protocol NewsFeedPresentationLogic {
-  func presentData(response: NewsFeed.Model.Response.ResponseType)
+    func presentData(response: NewsFeed.Model.Response.ResponseType)
 }
 
 class NewsFeedPresenter: NewsFeedPresentationLogic {
