@@ -23,7 +23,7 @@ enum NewsFeed {
     }
     struct ViewModel {
       enum ViewModelData {
-        case some
+          case displayNewsFeed(feedViewModel: FeedViewModel)
       }
     }
   }
