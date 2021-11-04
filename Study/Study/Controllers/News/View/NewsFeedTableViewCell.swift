@@ -16,6 +16,7 @@ protocol FeedCellViewModel {
     var comments: String? { get }
     var shares: String? { get }
     var views: String? { get }
+    var photoAttachement: FeedCellPhotoAttachementViewModel { get }
 }
 
 protocol FeedCellPhotoAttachementViewModel {
