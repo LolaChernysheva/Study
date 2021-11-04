@@ -18,6 +18,12 @@ protocol FeedCellViewModel {
     var views: String? { get }
 }
 
+protocol FeedCellPhotoAttachementViewModel {
+    var photoUrlString: String? { get }
+    var width: Int { get }
+    var height: Int { get }
+}
+
 final class NewsFeedTableViewCell: UITableViewCell {
     
     static let reusedId = "NewsFeedTableViewCell"
