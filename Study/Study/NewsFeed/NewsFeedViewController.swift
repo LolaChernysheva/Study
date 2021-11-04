@@ -66,6 +66,11 @@ class NewsFeedViewController: UIViewController, NewsFeedDisplayLogic {
     }
     
     func displayData(viewModel: NewsFeed.Model.ViewModel.ViewModelData) {
+        switch viewModel {
+        case .displayNewsFeed(let feedViewModel):
+            self.feedViewModel = feedViewModel
+            tableView.reloadData()
+        }
         
     }
     
