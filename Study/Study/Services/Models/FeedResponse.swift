@@ -66,6 +66,31 @@ struct Attachment: Decodable {
 struct Photo: Decodable {
     let sizes: [PhotoSize]
     
+    var height: Int {
+        return getPropperSize().height
+    }
+    
+    var width: Int {
+        return getPropperSize().width
+    }
+    
+    var srcBig: String {
+        return getPropperSize().url
+    }
+    
+    private func getPropperSize() -> PhotoSize {
+        //проходим по массиву sizes пока не найдем первый элемент с типом х
+        if let sizeX = sizes.first(where: { $0.type == "x" }) {
+            return sizeX
+        } else if let fallBackSize = sizes.last {
+            return fallBackSize
+        } else {
+            return PhotoSize(type: "wrong image",
+                             url: "wrong image",
+                             width: 0,
+                             height: 0)
+        }
+    }
 }
 
 struct PhotoSize: Decodable {
