@@ -43,5 +43,11 @@ struct FeedViewModel {
         var photoAttachement: FeedCellPhotoAttachementViewModel?
     }
     
+    struct FeedCellPhotoAttachement: FeedCellPhotoAttachementViewModel {
+        var photoUrlString: String?
+        var width: Int
+        var height: Int
+    }
+    
     let cells: [Cell]
 }
