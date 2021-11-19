@@ -35,6 +35,7 @@
 		F38DBD5327078BC600FFFA0F /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38DBD5227078BC600FFFA0F /* AuthService.swift */; };
 		F38DBD59270F04D400FFFA0F /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38DBD58270F04D400FFFA0F /* NetworkService.swift */; };
 		F38DBD5B270F063A00FFFA0F /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38DBD5A270F063A00FFFA0F /* API.swift */; };
+		F39A6ECE2747A49E004A0537 /* String + Height.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39A6ECD2747A49D004A0537 /* String + Height.swift */; };
 		F3DF1EE82719AD2000142D02 /* NewsFeedPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DF1EE12719AD2000142D02 /* NewsFeedPresenter.swift */; };
 		F3DF1EE92719AD2000142D02 /* NewsFeedWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DF1EE22719AD2000142D02 /* NewsFeedWorker.swift */; };
 		F3DF1EEA2719AD2000142D02 /* NewsFeedRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DF1EE32719AD2000142D02 /* NewsFeedRouter.swift */; };
@@ -109,6 +110,7 @@
 		F38DBD54270E425100FFFA0F /* VK_ios_sdk.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VK_ios_sdk.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F38DBD58270F04D400FFFA0F /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		F38DBD5A270F063A00FFFA0F /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		F39A6ECD2747A49D004A0537 /* String + Height.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Height.swift"; sourceTree = "<group>"; };
 		F3DF1EE12719AD2000142D02 /* NewsFeedPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedPresenter.swift; sourceTree = "<group>"; };
 		F3DF1EE22719AD2000142D02 /* NewsFeedWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedWorker.swift; sourceTree = "<group>"; };
 		F3DF1EE32719AD2000142D02 /* NewsFeedRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedRouter.swift; sourceTree = "<group>"; };
@@ -447,6 +449,7 @@
 				F3DF1EF12729CBD300142D02 /* Constraints.swift */,
 				F3DF1EF62729D20C00142D02 /* WebImageView.swift */,
 				F3DF1EF8272C354D00142D02 /* Constants.swift */,
+				F39A6ECD2747A49D004A0537 /* String + Height.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -690,6 +693,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F38DBD59270F04D400FFFA0F /* NetworkService.swift in Sources */,
+				F39A6ECE2747A49E004A0537 /* String + Height.swift in Sources */,
 				F35A03F327187BAD0033AB0B /* FeedResponse.swift in Sources */,
 				D353745626B467B600EEBB37 /* SearchGroupTableViewController.swift in Sources */,
 				84072FAF26A6CACD00B0A9B8 /* SignUpViewController.swift in Sources */,
