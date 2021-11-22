@@ -38,7 +38,6 @@ final class NewsFeedTableViewCell: UITableViewCell {
     //Первый слой элементов
     let cardView: UIView = {
         let view = UIView()
-        view.backgroundColor = .magenta
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -49,24 +48,22 @@ final class NewsFeedTableViewCell: UITableViewCell {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
+
     let postLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.font = Constants.postLabelFont
-        label.backgroundColor = .yellow
         return label
-        
     }()
-    
+
     let postImageView: WebImageView = {
         let imageView = WebImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.backgroundColor = .blue
+        imageView.backgroundColor = .lightGray
         return imageView
     }()
-    
+
     let bottomView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -76,7 +73,9 @@ final class NewsFeedTableViewCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        overlayFirstLayer()
+        overlayFirstLayer() //первый слой
+        overlaySecondLayer()
+       // setUpUIAndConstr()
     }
     
     required init?(coder: NSCoder) {
