@@ -91,6 +91,16 @@ final class NewsFeedTableViewCell: UITableViewCell {
         commentsLabel.text = viewModel.comments
         sharesLabel.text = viewModel.shares
         viewsLabel.text = viewModel.views
+        postLabel.frame = viewModel.sizes.postLabelFrame
+        postImageView.frame = viewModel.sizes.attachementFrame
+        bottomView.frame = viewModel.sizes.bottomViewFrame
+        
+        if let photoAttachement = viewModel.photoAttachement {
+            postImageView.set(imageURL: photoAttachement.photoUrlString)
+            postImageView.isHidden = false
+        } else {
+            postImageView.isHidden = true
+        }
     }
     //Первый слой элементов
     private func overlayFirstLayer() {
