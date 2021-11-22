@@ -196,6 +196,10 @@ final class NewsFeedTableViewCell: UITableViewCell {
         overlayThirdLayerOnTopView() //трейтий слой на topView
         overlayThirdLayerOnBottomView() //трейтий слой на bottomView
         overlayFourthLayerOnBottomViewViews() //четвертый слой на bottomView
+        
+        backgroundColor = .clear
+        selectionStyle = .none
+        
         iconImageView.layer.cornerRadius = Constants.topViewHeight / 2
         iconImageView.clipsToBounds = true
     }
