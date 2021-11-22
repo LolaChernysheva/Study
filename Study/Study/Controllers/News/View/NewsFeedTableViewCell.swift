@@ -236,4 +236,27 @@ final class NewsFeedTableViewCell: UITableViewCell {
         topView.heightAnchor.constraint(equalToConstant: Constants.topViewHeight).isActive = true
     }
     
+    private func overlayThirdLayerOnTopView() {
+        topView.addSubview(iconImageView)
+        topView.addSubview(nameLabel)
+        topView.addSubview(dateLabel)
+        
+        //iconImageView constraints
+        iconImageView.topAnchor.constraint(equalTo: topView.topAnchor).isActive = true
+        iconImageView.leadingAnchor.constraint(equalTo: topView.leadingAnchor).isActive = true
+        iconImageView.heightAnchor.constraint(equalToConstant: Constants.topViewHeight).isActive = true
+        iconImageView.widthAnchor.constraint(equalToConstant: Constants.topViewHeight).isActive = true
+        
+        //nameLabel constraints
+        nameLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: 8).isActive = true
+        nameLabel.trailingAnchor.constraint(equalTo: topView.trailingAnchor, constant: -8).isActive = true
+        nameLabel.topAnchor.constraint(equalTo: topView.topAnchor, constant: 2).isActive = true
+        nameLabel.heightAnchor.constraint(equalToConstant: Constants.topViewHeight / 2 - 2).isActive = true
+        
+        //dateLabel constraints
+        dateLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: 8).isActive = true
+        dateLabel.trailingAnchor.constraint(equalTo: topView.trailingAnchor, constant: -8).isActive = true
+        dateLabel.bottomAnchor.constraint(equalTo: topView.bottomAnchor, constant: -2).isActive = true
+        dateLabel.heightAnchor.constraint(equalToConstant: 14).isActive = true
+    }
 }
