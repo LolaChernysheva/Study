@@ -291,4 +291,24 @@ final class NewsFeedTableViewCell: UITableViewCell {
                          trailing: bottomView.trailingAnchor,
                          size: CGSize(width: Constants.bottomViewViewWidth, height: Constants.bottomViewHeight))
     }
+    
+    private func overlayFourthLayerOnBottomViewViews() {
+        likesView.addSubview(likesImage)
+        likesView.addSubview(likesLabel)
+        
+        commentsView.addSubview(commentsImage)
+        commentsView.addSubview(commentsLabel)
+        
+        sharesView.addSubview(sharesImage)
+        sharesView.addSubview(sharesLabel)
+        
+        viewsView.addSubview(viewsImage)
+        viewsView.addSubview(viewsLabel)
+        
+        helpInFourthLayer(view: likesView, imageView: likesImage, label: likesLabel)
+        helpInFourthLayer(view: commentsView, imageView: commentsImage, label: commentsLabel)
+        helpInFourthLayer(view: sharesView, imageView: sharesImage, label: sharesLabel)
+        helpInFourthLayer(view: viewsView, imageView: viewsImage, label: viewsLabel)
+    }
+    
 }
