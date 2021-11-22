@@ -66,6 +66,31 @@ final class NewsFeedTableViewCell: UITableViewCell {
         let view = UIView()
         return view
     }()
+
+    //Трейтий слой на topView
+    let iconImageView: WebImageView = {
+        let imageView = WebImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+
+    let nameLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        label.numberOfLines = 0
+        label.textColor = .darkGray
+        return label
+    }()
+
+    let dateLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.textColor = .lightGray
+        return label
+    }()
+
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
