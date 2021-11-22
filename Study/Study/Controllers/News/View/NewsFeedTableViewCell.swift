@@ -68,6 +68,16 @@ final class NewsFeedTableViewCell: UITableViewCell {
         let view = UIView()
         return view
     }()
+    
+    let moreTextButton: UIButton = {
+        let button = UIButton()
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .medium)
+        button.setTitleColor(ButtonAppearance.showMoreTextButtonColor, for: .normal)
+        button.contentHorizontalAlignment = .left
+        button.contentVerticalAlignment = .center
+        button.setTitle("Показать полностью...", for: .normal)
+        return button
+    }()
 
     //Трейтий слой на topView
     let iconImageView: WebImageView = {
