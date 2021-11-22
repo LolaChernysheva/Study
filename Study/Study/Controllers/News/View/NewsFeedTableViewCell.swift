@@ -187,7 +187,9 @@ final class NewsFeedTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         overlayFirstLayer() //первый слой
         overlaySecondLayer() //второй слой
-       // setUpUIAndConstr()
+        overlayThirdLayerOnTopView() //трейтий слой на topView
+        overlayThirdLayerOnBottomView() //трейтий слой на bottomView
+        overlayFourthLayerOnBottomViewViews() //четвертый слой на bottomView
     }
     
     required init?(coder: NSCoder) {
