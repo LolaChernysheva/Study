@@ -259,4 +259,36 @@ final class NewsFeedTableViewCell: UITableViewCell {
         dateLabel.bottomAnchor.constraint(equalTo: topView.bottomAnchor, constant: -2).isActive = true
         dateLabel.heightAnchor.constraint(equalToConstant: 14).isActive = true
     }
+    
+    private func overlayThirdLayerOnBottomView() {
+        bottomView.addSubview(likesView)
+        bottomView.addSubview(commentsView)
+        bottomView.addSubview(viewsView)
+        bottomView.addSubview(sharesView)
+        
+        //likesView constraints
+        likesView.anchor(top: bottomView.topAnchor,
+                         leading: bottomView.leadingAnchor,
+                         bottom: nil,
+                         trailing: nil,
+                         size: CGSize(width: Constants.bottomViewViewWidth, height: Constants.bottomViewHeight))
+        
+        commentsView.anchor(top: bottomView.topAnchor,
+                         leading: likesView.trailingAnchor,
+                         bottom: nil,
+                         trailing: nil,
+                         size: CGSize(width: Constants.bottomViewViewWidth, height: Constants.bottomViewHeight))
+        
+        sharesView.anchor(top: bottomView.topAnchor,
+                         leading: commentsView.trailingAnchor,
+                         bottom: nil,
+                         trailing: nil,
+                         size: CGSize(width: Constants.bottomViewViewWidth, height: Constants.bottomViewHeight))
+        
+        viewsView.anchor(top: bottomView.topAnchor,
+                         leading: nil,
+                         bottom: nil,
+                         trailing: bottomView.trailingAnchor,
+                         size: CGSize(width: Constants.bottomViewViewWidth, height: Constants.bottomViewHeight))
+    }
 }
