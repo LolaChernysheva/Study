@@ -64,6 +64,9 @@ final class NewsFeedTableViewCell: UITableViewCell {
 
     let bottomView: UIView = {
         let view = UIView()
+        return view
+    }()
+        let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
