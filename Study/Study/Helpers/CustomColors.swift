@@ -16,4 +16,5 @@ enum AppAppearence {
 enum ButtonAppearance {
 	static let buttonIsActive = UIColor(red: 39/255, green: 135/255, blue: 245/255, alpha: 1)
 	static let bittonIsInactive = UIColor(red: 39/255, green: 135/255, blue: 245/255, alpha: 1)
+    static let showMoreTextButtonColor = UIColor(red: 102/255, green: 159/255, blue: 212/255, alpha: 1)
 }
