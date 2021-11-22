@@ -51,7 +51,6 @@ final class NewsFeedTableViewCell: UITableViewCell {
 
     let postLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
         label.font = Constants.postLabelFont
         return label
@@ -59,7 +58,6 @@ final class NewsFeedTableViewCell: UITableViewCell {
 
     let postImageView: WebImageView = {
         let imageView = WebImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.backgroundColor = .lightGray
         return imageView
     }()
