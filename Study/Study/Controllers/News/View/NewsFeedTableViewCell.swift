@@ -311,4 +311,17 @@ final class NewsFeedTableViewCell: UITableViewCell {
         helpInFourthLayer(view: viewsView, imageView: viewsImage, label: viewsLabel)
     }
     
+    private func helpInFourthLayer(view: UIView, imageView: UIImageView, label: UILabel) {
+        
+        //imageView constraints
+        imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+        imageView.widthAnchor.constraint(equalToConstant: Constants.bottomViewViewsIconSize).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: Constants.bottomViewViewsIconSize).isActive = true
+        
+        //label constraints
+        label.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        label.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 4).isActive = true
+        label.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+    }
 }
