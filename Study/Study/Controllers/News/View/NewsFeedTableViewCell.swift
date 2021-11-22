@@ -244,13 +244,13 @@ final class NewsFeedTableViewCell: UITableViewCell {
     
     //MARK: - private
     
-    //Первый слой элементов
+    //MARK: Первый слой элементов
     private func overlayFirstLayer() {
         addSubview(cardView)
         cardView.fillSuperview(padding: Constants.cardInsets)
     }
      
-    //Второй слой элементов
+    //MARK: Второй слой элементов
     private func overlaySecondLayer() {
         cardView.addSubview(topView)
         cardView.addSubview(postLabel)
@@ -264,6 +264,7 @@ final class NewsFeedTableViewCell: UITableViewCell {
         topView.heightAnchor.constraint(equalToConstant: Constants.topViewHeight).isActive = true
     }
     
+    //MARK: Третий слой элементов  topView
     private func overlayThirdLayerOnTopView() {
         topView.addSubview(iconImageView)
         topView.addSubview(nameLabel)
@@ -288,6 +289,7 @@ final class NewsFeedTableViewCell: UITableViewCell {
         dateLabel.heightAnchor.constraint(equalToConstant: 14).isActive = true
     }
     
+    //MARK: Третий слой элементов  bottomView
     private func overlayThirdLayerOnBottomView() {
         bottomView.addSubview(likesView)
         bottomView.addSubview(commentsView)
@@ -320,6 +322,7 @@ final class NewsFeedTableViewCell: UITableViewCell {
                          size: CGSize(width: Constants.bottomViewViewWidth, height: Constants.bottomViewHeight))
     }
     
+    //MARK: Четвертый слой элементов  bottomView
     private func overlayFourthLayerOnBottomViewViews() {
         likesView.addSubview(likesImage)
         likesView.addSubview(likesLabel)
