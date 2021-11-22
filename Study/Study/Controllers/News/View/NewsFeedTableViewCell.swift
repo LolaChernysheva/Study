@@ -196,6 +196,8 @@ final class NewsFeedTableViewCell: UITableViewCell {
         overlayThirdLayerOnTopView() //трейтий слой на topView
         overlayThirdLayerOnBottomView() //трейтий слой на bottomView
         overlayFourthLayerOnBottomViewViews() //четвертый слой на bottomView
+        iconImageView.layer.cornerRadius = Constants.topViewHeight / 2
+        iconImageView.clipsToBounds = true
     }
     
     required init?(coder: NSCoder) {
