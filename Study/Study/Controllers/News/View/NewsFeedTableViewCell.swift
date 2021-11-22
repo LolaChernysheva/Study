@@ -196,6 +196,8 @@ final class NewsFeedTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - public
+    
     //Метод заполнения свойств ячейки данными
     func set(viewModel: FeedCellViewModel) {
         nameLabel.text = viewModel.name
@@ -216,6 +218,9 @@ final class NewsFeedTableViewCell: UITableViewCell {
             postImageView.isHidden = true
         }
     }
+    
+    //MARK: - private
+    
     //Первый слой элементов
     private func overlayFirstLayer() {
         addSubview(cardView)
