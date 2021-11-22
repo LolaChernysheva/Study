@@ -97,9 +97,13 @@ final class NewsFeedTableViewCell: UITableViewCell {
         addSubview(cardView)
         cardView.fillSuperview(padding: Constants.cardInsets)
     }
-    
+     
     //Второй слой элементов
     private func overlaySecondLayer() {
+        cardView.addSubview(topView)
+        cardView.addSubview(postLabel)
+        cardView.addSubview(postImageView)
+        cardView.addSubview(bottomView)
         
     }
     
