@@ -116,6 +116,71 @@ final class NewsFeedTableViewCell: UITableViewCell {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+
+    // Четвертый слой на bottomView
+    let likesImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = UIImage(named: "likes")
+        return imageView
+    }()
+    
+    let commentsImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = UIImage(named: "comment")
+        return imageView
+    }()
+    
+    let sharesImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = UIImage(named: "share")
+        return imageView
+    }()
+    
+    let viewsImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = UIImage(named: "eye")
+        return imageView
+    }()
+    
+    let likesLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .gray
+        label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        label.lineBreakMode = .byClipping
+        return label
+    }()
+
+    let commentsLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .gray
+        label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        label.lineBreakMode = .byClipping
+        return label
+    }()
+
+    let sharesLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .gray
+        label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        label.lineBreakMode = .byClipping
+        return label
+    }()
+
+    let viewsLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .gray
+        label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        label.lineBreakMode = .byClipping
+        return label
+    }()
     
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
