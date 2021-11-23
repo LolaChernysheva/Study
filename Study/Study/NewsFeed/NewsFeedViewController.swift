@@ -13,8 +13,8 @@ protocol NewsFeedDisplayLogic: class {
     func displayData(viewModel: NewsFeed.Model.ViewModel.ViewModelData)
 }
 
-class NewsFeedViewController: UIViewController, NewsFeedDisplayLogic {
-    
+class NewsFeedViewController: UIViewController, NewsFeedDisplayLogic, NewsFeedCellDelegate {
+
     var tableView = UITableView()
     
     var interactor: NewsFeedBusinessLogic?
@@ -83,6 +83,16 @@ class NewsFeedViewController: UIViewController, NewsFeedDisplayLogic {
             maker.top.bottom.leading.trailing.equalToSuperview()
         }
     }
+    
+    //MARK: NewsFeedCellDelegate
+    func revealPost(for cell: NewsFeedTableViewCell) {
+        //получаем номер ячейки, текст которой хотим раскрыть
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        //получение доступа ко всей информации ячейки, текст которой хотим раскрыть
+        let cellViewModel = feedViewModel.cells[indexPath.row]
+        interactor?.makeRequest(request: NewsFeed.Model.Request.RequestType.revealPostIds(postId: cellViewModel.postId))
+    }
+    
 }
 
 extension NewsFeedViewController: UITableViewDelegate, UITableViewDataSource {
@@ -90,6 +100,7 @@ extension NewsFeedViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: NewsFeedTableViewCell.reusedId, for: indexPath) as! NewsFeedTableViewCell
         let cellViewModel = feedViewModel.cells[indexPath.row]
         cell.set(viewModel: cellViewModel)
+        cell.delegate = self
         return cell
     }
     
@@ -100,6 +111,10 @@ extension NewsFeedViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let cellViewModel = feedViewModel.cells[indexPath.row]
         return cellViewModel.sizes.totalHeight
-        //return 212
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        let cellViewModel = feedViewModel.cells[indexPath.row]
+        return cellViewModel.sizes.totalHeight
     }
 }

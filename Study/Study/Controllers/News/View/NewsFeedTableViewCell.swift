@@ -34,9 +34,15 @@ protocol FeedCellPhotoAttachementViewModel {
     var height: Int { get }
 }
 
+protocol NewsFeedCellDelegate: class {
+    //раскрыть пост
+    func revealPost(for cell: NewsFeedTableViewCell)
+}
+
 final class NewsFeedTableViewCell: UITableViewCell {
     
     static let reusedId = "NewsFeedTableViewCell"
+    weak var delegate: NewsFeedCellDelegate?
     
     //Первый слой элементов
     let cardView: UIView = {
@@ -208,6 +214,8 @@ final class NewsFeedTableViewCell: UITableViewCell {
         overlayThirdLayerOnBottomView() //трейтий слой на bottomView
         overlayFourthLayerOnBottomViewViews() //четвертый слой на bottomView
         
+        moreTextButton.addTarget(self, action: #selector(moreTextButtonTouch), for: .touchUpInside)
+        
         backgroundColor = .clear
         selectionStyle = .none
         
@@ -244,11 +252,14 @@ final class NewsFeedTableViewCell: UITableViewCell {
         }
     }
     
-    //MARK: - private
+    //MARK:  private
+    @objc func moreTextButtonTouch() {
+        delegate?.revealPost(for: self)
+    }
     
     //MARK: Первый слой элементов
     private func overlayFirstLayer() {
-        addSubview(cardView)
+        contentView.addSubview(cardView)
         cardView.fillSuperview(padding: Constants.cardInsets)
     }
      
