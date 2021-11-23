@@ -16,7 +16,7 @@ protocol FeedCellViewModel {
     var comments: String? { get }
     var shares: String? { get }
     var views: String? { get }
-    var photoAttachement: FeedCellPhotoAttachementViewModel? { get }
+    var photoAttachements: [FeedCellPhotoAttachementViewModel] { get }
     var sizes: FeedCellSizes { get }
 }
 
@@ -85,6 +85,8 @@ final class NewsFeedTableViewCell: UITableViewCell {
         button.setTitle("Показать полностью...", for: .normal)
         return button
     }()
+    
+    let galleryCollectionView = GalleryCollectionView()
 
     //Трейтий слой на topView
     let iconImageView: WebImageView = {
@@ -240,15 +242,23 @@ final class NewsFeedTableViewCell: UITableViewCell {
         sharesLabel.text = viewModel.shares
         viewsLabel.text = viewModel.views
         postLabel.frame = viewModel.sizes.postLabelFrame
-        postImageView.frame = viewModel.sizes.attachementFrame
         bottomView.frame = viewModel.sizes.bottomViewFrame
         moreTextButton.frame = viewModel.sizes.moreTextButtonFrame
         
-        if let photoAttachement = viewModel.photoAttachement {
+        if let photoAttachement = viewModel.photoAttachements.first, viewModel.photoAttachements.count == 1 {
             postImageView.set(imageURL: photoAttachement.photoUrlString)
             postImageView.isHidden = false
-        } else {
+            galleryCollectionView.isHidden = true
+            postImageView.frame = viewModel.sizes.attachementFrame
+        } else if viewModel.photoAttachements.count > 1 {
+            galleryCollectionView.frame = viewModel.sizes.attachementFrame
             postImageView.isHidden = true
+            galleryCollectionView.isHidden = false
+            galleryCollectionView.set(photos: viewModel.photoAttachements)
+        }
+        else {
+            postImageView.isHidden = true
+            galleryCollectionView.isHidden = true
         }
     }
     
@@ -269,6 +279,7 @@ final class NewsFeedTableViewCell: UITableViewCell {
         cardView.addSubview(postLabel)
         cardView.addSubview(moreTextButton)
         cardView.addSubview(postImageView)
+        cardView.addSubview(galleryCollectionView)
         cardView.addSubview(bottomView)
         
         //topView constraints
