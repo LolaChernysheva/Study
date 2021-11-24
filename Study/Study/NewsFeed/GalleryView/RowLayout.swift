@@ -42,6 +42,27 @@ class RowLayout: UICollectionViewLayout {
         let superViewWidth = collectionView.frame.width
         guard let rowHeight = self.rowHightCounter(superViewWidth: superViewWidth, photosArray: photos) else { return }
         
+        let photosRatios = photos.map { $0.height / $0.width  }
+        var yOffset = [CGFloat]()
+        for row in 0 ..< numbersOfRows {
+            yOffset.append(CGFloat(row) * rowHeight)
+        }
+        
+        var xOffset = [CGFloat](repeating: 0, count: numbersOfRows)
+        var row = 0
+        for item in 0 ..< collectionView.numberOfItems(inSection: 0) {
+            let indexPath = IndexPath(item: item, section: 0)
+            let ratio = photosRatios[indexPath.row]
+            let width = rowHeight / ratio
+            let frame = CGRect(x: xOffset[row], y: yOffset[row], width: width, height: rowHeight)
+            let insetFrame = frame.insetBy(dx: cellPadding, dy: cellPadding)
+            let attribute = UICollectionViewLayoutAttributes(forCellWith: indexPath)
+            attribute.frame = insetFrame
+            cache.append(attribute)
+            contentWidth = max(contentWidth, frame.maxX)
+            xOffset[row] = xOffset[row] + width
+            row = row < (numbersOfRows - 1) ? (row + 1) : 0
+        }
     }
     
     private func rowHightCounter(superViewWidth: CGFloat, photosArray: [CGSize]) -> CGFloat? {
@@ -53,6 +74,20 @@ class RowLayout: UICollectionViewLayout {
         let difference = superViewWidth / myPhotoWidhtMinRatio.width
         rowHeight = myPhotoWidhtMinRatio.height * difference
         return rowHeight
+    }
+    
+    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+        var visibleLayoutAttributes = [UICollectionViewLayoutAttributes]()
+        for attribute in cache {
+            if attribute.frame.intersects(rect) {
+                visibleLayoutAttributes.append(attribute)
+            }
+        }
+        return visibleLayoutAttributes
+    }
+    
+    override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        return cache[indexPath.row]
     }
     
     
