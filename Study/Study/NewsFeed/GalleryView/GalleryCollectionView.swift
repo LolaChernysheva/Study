@@ -14,8 +14,6 @@ class GalleryCollectionView: UICollectionView {
     
     
     init() {
-       let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
         let rowLayout = RowLayout()
         super.init(frame: .zero, collectionViewLayout: rowLayout)
         
