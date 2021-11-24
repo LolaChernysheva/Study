@@ -34,8 +34,8 @@ class GalleryCollectionView: UICollectionView {
     }
 }
 
-extension GalleryCollectionView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
+extension GalleryCollectionView: UICollectionViewDelegate, UICollectionViewDataSource, RowLayoutDelegate {
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photos.count 
     }
@@ -46,8 +46,11 @@ extension GalleryCollectionView: UICollectionViewDelegate, UICollectionViewDataS
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: frame.width, height: frame.height)
+    func collectionView(collectionView: UICollectionView, photoAtIndexPath indexPath: IndexPath) -> CGSize {
+        let width = photos[indexPath.row].width
+        let height = photos[indexPath.row].height
+        return CGSize(width: width, height: height)
     }
+
     
 }
