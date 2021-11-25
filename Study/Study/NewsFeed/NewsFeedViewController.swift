@@ -20,6 +20,7 @@ class NewsFeedViewController: UIViewController, NewsFeedDisplayLogic, NewsFeedCe
     var interactor: NewsFeedBusinessLogic?
     var router: (NSObjectProtocol & NewsFeedRoutingLogic)?
     private var feedViewModel = FeedViewModel.init(cells: [])
+    private var titleView = TitleView()
     
     // MARK: Object lifecycle
     
@@ -60,6 +61,7 @@ class NewsFeedViewController: UIViewController, NewsFeedDisplayLogic, NewsFeedCe
         self.tableView.dataSource = self
         
         self.setUpConstraints()
+        setUpTopBars()
         
         tableView.register(NewsFeedTableViewCell.self, forCellReuseIdentifier: NewsFeedTableViewCell.reusedId)
         interactor?.makeRequest(request: NewsFeed.Model.Request.RequestType.getNewsFeed)

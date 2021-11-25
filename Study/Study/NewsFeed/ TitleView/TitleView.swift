@@ -25,6 +25,7 @@ class TitleView: UIView {
         translatesAutoresizingMaskIntoConstraints = false
         addSubview(myTextField)
         addSubview(myAvatarView)
+        makeConstraints()
     }
     
     private func makeConstraints() {
