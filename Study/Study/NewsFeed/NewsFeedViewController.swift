@@ -21,6 +21,12 @@ class NewsFeedViewController: UIViewController, NewsFeedDisplayLogic, NewsFeedCe
     var router: (NSObjectProtocol & NewsFeedRoutingLogic)?
     private var feedViewModel = FeedViewModel.init(cells: [])
     private var titleView = TitleView()
+    private var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        return refreshControl
+    }()
     
     // MARK: Object lifecycle
     
@@ -62,8 +68,9 @@ class NewsFeedViewController: UIViewController, NewsFeedDisplayLogic, NewsFeedCe
         
         self.setUpConstraints()
         setUpTopBars()
+        setUpTable()
         
-        tableView.register(NewsFeedTableViewCell.self, forCellReuseIdentifier: NewsFeedTableViewCell.reusedId)
+        
         interactor?.makeRequest(request: NewsFeed.Model.Request.RequestType.getNewsFeed)
         interactor?.makeRequest(request: NewsFeed.Model.Request.RequestType.getUser)
     }
@@ -79,13 +86,24 @@ class NewsFeedViewController: UIViewController, NewsFeedDisplayLogic, NewsFeedCe
         
     }
     
+    @objc private func refresh() {
+        
+    }
+    
+    private func setUpTable() {
+        tableView.register(NewsFeedTableViewCell.self, forCellReuseIdentifier: NewsFeedTableViewCell.reusedId)
+        
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = .clear
+        tableView.addSubview(refreshControl)
+    }
+    
     private func setUpTopBars() {
         //бар будет появяться, когда лента будет листаться вверх и скрываться при опускании
         self.navigationController?.hidesBarsOnSwipe = true
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationItem.titleView = titleView
     }
-    
     
     private func setUpConstraints() {
         
