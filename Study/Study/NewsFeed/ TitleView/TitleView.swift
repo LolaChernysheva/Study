@@ -8,12 +8,15 @@
 import Foundation
 import UIKit
 
+protocol TitleViewViewModel {
+    var photoUrlString: String? { get }
+}
+
 class TitleView: UIView {
     
     private var myAvatarView: WebImageView = {
         let imageView = WebImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.backgroundColor = .yellow
         imageView.clipsToBounds = true
         return imageView
     }()
@@ -26,6 +29,10 @@ class TitleView: UIView {
         addSubview(myTextField)
         addSubview(myAvatarView)
         makeConstraints()
+    }
+    
+    func set(userViewModel: TitleViewViewModel) {
+        myAvatarView.set(imageURL: userViewModel.photoUrlString)
     }
     
     private func makeConstraints() {

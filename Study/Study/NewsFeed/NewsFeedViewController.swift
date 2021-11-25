@@ -65,6 +65,7 @@ class NewsFeedViewController: UIViewController, NewsFeedDisplayLogic, NewsFeedCe
         
         tableView.register(NewsFeedTableViewCell.self, forCellReuseIdentifier: NewsFeedTableViewCell.reusedId)
         interactor?.makeRequest(request: NewsFeed.Model.Request.RequestType.getNewsFeed)
+        interactor?.makeRequest(request: NewsFeed.Model.Request.RequestType.getUser)
     }
     
     func displayData(viewModel: NewsFeed.Model.ViewModel.ViewModelData) {
@@ -72,6 +73,8 @@ class NewsFeedViewController: UIViewController, NewsFeedDisplayLogic, NewsFeedCe
         case .displayNewsFeed(let feedViewModel):
             self.feedViewModel = feedViewModel
             tableView.reloadData()
+        case .displayUser(userViewModel: let userViewModel):
+            titleView.set(userViewModel: userViewModel)
         }
         
     }

@@ -50,7 +50,7 @@ final class NetworkService: Networking {
         //название сайта, с которого мы запрашиваем запрос
         components.host = API.host
         //определяет метод, к которум мы хотим обратиться
-        components.path = API.newsFeed
+        components.path = path
         //параметры
         components.queryItems = params.map{ URLQueryItem(name: $0, value: $1)}
         return components.url!
