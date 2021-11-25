@@ -74,6 +74,12 @@ class NewsFeedViewController: UIViewController, NewsFeedDisplayLogic, NewsFeedCe
         
     }
     
+    private func setUpTopBars() {
+        //бар будет появяться, когда лента будет листаться вверх и скрываться при опускании
+        self.navigationController?.hidesBarsOnSwipe = true
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationItem.titleView = titleView
+    }
     
     
     private func setUpConstraints() {
