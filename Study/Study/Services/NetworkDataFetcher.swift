@@ -45,7 +45,7 @@ struct NetworkDataFetcher: DataFetcher {
             }
 
             let decoded = self.decodeJSON(type: UserResponseWrapped.self, from: data)
-            decoded?.response.first
+            response(decoded?.response.first)
         }
     }
     
