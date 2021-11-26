@@ -47,10 +47,11 @@ class NewsFeedPresenter: NewsFeedPresentationLogic {
             return postId == feedItem.postId
         }
         let sizes = cellLayoutCalculator.sizes(postText: feedItem.text, photoAttachments: photoAttachements, isFullSizedPost: isFullSized)
+        let postText = feedItem.text?.replacingOccurrences(of: "<br>", with: "\n")
         return FeedViewModel.Cell.init(iconUrlString: profile.photo,
                                        name: profile.name,
                                        date: dateTitle,
-                                       text: feedItem.text,
+                                       text: postText,
                                        likes: formattedCounter(feedItem.likes?.count),
                                        comments: formattedCounter(feedItem.comments?.count),
                                        shares: formattedCounter(feedItem.reposts?.count),
