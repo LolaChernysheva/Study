@@ -9,7 +9,11 @@ import UIKit
 
 class WebImageView: UIImageView {
     
+    private var currentUrlString: String?
+    
     func set(imageURL: String?) {
+        
+        currentUrlString = imageURL
         guard let imageURL = imageURL, let url = URL(string: imageURL) else {
             self.image = nil
             return }
@@ -27,7 +31,6 @@ class WebImageView: UIImageView {
             
             DispatchQueue.main.async {
                 if let data = data, let response = response {
-                    self?.image = UIImage(data: data)
                     //добавляем изображение в кэш
                     self?.handleLoadedImage(data: data, response: response)
                 }
@@ -43,6 +46,9 @@ class WebImageView: UIImageView {
         //обращаемся к объекту, который хранит кэш и передаем кэшированный ответ
         URLCache.shared.storeCachedResponse(cachedResponse, for: URLRequest(url: responseURL))
         
+        if responseURL.absoluteString == currentUrlString {
+            self.image = UIImage(data: data)
+        } 
     }
 }
 
