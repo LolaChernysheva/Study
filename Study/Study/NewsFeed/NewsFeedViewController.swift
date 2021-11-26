@@ -92,6 +92,9 @@ class NewsFeedViewController: UIViewController, NewsFeedDisplayLogic, NewsFeedCe
     }
     
     private func setUpTable() {
+        let topInset: CGFloat = 8
+        tableView.contentInset.top = topInset
+        
         tableView.register(NewsFeedTableViewCell.self, forCellReuseIdentifier: NewsFeedTableViewCell.reusedId)
         
         tableView.separatorStyle = .none
