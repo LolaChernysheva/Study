@@ -58,11 +58,28 @@ final class NewsFeedTableViewCell: UITableViewCell {
         return view
     }()
 
-    let postLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 0
-        label.font = Constants.postLabelFont
-        return label
+//    let postLabel: UILabel = {
+//        let label = UILabel()
+//        label.numberOfLines = 0
+//        label.font = Constants.postLabelFont
+//        return label
+//    }()
+    
+    let postLabel: UITextView = {
+        let textView = UITextView()
+        textView.font = Constants.postLabelFont
+        textView.isScrollEnabled = false
+        textView.isSelectable = true
+        textView.isUserInteractionEnabled = true
+        textView.isEditable = false
+        
+        //настройка отступов (для отображения ссылок, телефонов и т д)
+        let padding = textView.textContainer.lineFragmentPadding
+        textView.textContainerInset = UIEdgeInsets.init(top: 0, left: -padding, bottom: 0, right: -padding)
+        
+        //распознавание спец текста(ссылки, номер телефона и т д)
+        textView.dataDetectorTypes = UIDataDetectorTypes.all
+        return textView
     }()
 
     let postImageView: WebImageView = {
