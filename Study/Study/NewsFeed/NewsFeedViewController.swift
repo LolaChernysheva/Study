@@ -89,7 +89,7 @@ class NewsFeedViewController: UIViewController, NewsFeedDisplayLogic, NewsFeedCe
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if scrollView.contentOffset.y > scrollView.contentSize.height / 1.1 {
-            interactor?.makeRequest(request: NewsFeed.Model.Request.RequestType.getNewsFeed)
+            //interactor?.makeRequest(request: NewsFeed.Model.Request.RequestType.getNewsFeed)
         }
     }
     

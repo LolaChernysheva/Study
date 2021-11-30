@@ -17,38 +17,24 @@ class NewsFeedInteractor: NewsFeedBusinessLogic {
     var presenter: NewsFeedPresentationLogic?
     var service: NewsFeedService?
     
-    private var fetcher: DataFetcher = NetworkDataFetcher(networking: NetworkService())
-    private var revealedPostIds = [Int]()
-    private var feedResponse: FeedResponse?
-    
     func makeRequest(request: NewsFeed.Model.Request.RequestType) {
         if service == nil {
             service = NewsFeedService()
         }
-        
         switch request {
             
         case .getNewsFeed:
-            fetcher.getFeed { [weak self] (feedResponse) in
-                self?.feedResponse = feedResponse
-                self?.presentFeed()
-            }
-        case .revealPostIds(postId: let postId):
-            revealedPostIds.append(postId)
-            presentFeed()
+            service?.getFeed(completion: { [weak self] (revealedPostIds, feed) in
+                self?.presenter?.presentData(response: NewsFeed.Model.Response.ResponseType.presentNewsFeed(feed: feed, revealedPostIds: revealedPostIds))
+            })
         case .getUser:
-            fetcher.getUser { (userResponse) in
-                print(userResponse)
-                self.presenter?.presentData(response: NewsFeed.Model.Response.ResponseType.presentUserInfo(user: userResponse ))
-            }
+            service?.getUser(completion: { [weak self] (user) in
+                self?.presenter?.presentData(response: NewsFeed.Model.Response.ResponseType.presentUserInfo(user: user))
+            })
+        case .revealPostIds(postId: let postId):
+            service?.revealedPostIds(forPostId: postId, completion: { [weak self] (revealedPostIds, feed) in
+                self?.presenter?.presentData(response: NewsFeed.Model.Response.ResponseType.presentNewsFeed(feed: feed, revealedPostIds: revealedPostIds ))
+            })
         }
-        
     }
-    
-    private func presentFeed() {
-        guard let feedResponse = feedResponse else { return }
-        presenter?.presentData(response: NewsFeed.Model.Response.ResponseType.presentNewsFeed(feed: feedResponse, revealedPostIds: revealedPostIds))
-
-    }
-    
 }
