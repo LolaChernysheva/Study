@@ -9,29 +9,30 @@
 import UIKit
 
 enum NewsFeed {
-   
-  enum Model {
-    struct Request {
-      enum RequestType {
-        case getNewsFeed
-          case getUser
-        case revealPostIds(postId: Int)
-      }
+    
+    enum Model {
+        struct Request {
+            enum RequestType {
+                case getNewsFeed
+                case getUser
+                case revealPostIds(postId: Int)
+                
+            }
+        }
+        struct Response {
+            enum ResponseType {
+                case presentNewsFeed(feed: FeedResponse, revealedPostIds: [Int])
+                case presentUserInfo(user: UserResponse?)
+            }
+        }
+        struct ViewModel {
+            enum ViewModelData {
+                case displayNewsFeed(feedViewModel: FeedViewModel)
+                case displayUser(userViewModel: UserViewModel)
+            }
+        }
     }
-    struct Response {
-      enum ResponseType {
-          case presentNewsFeed(feed: FeedResponse, revealedPostIds: [Int])
-          case presentUserInfo(user: UserResponse?)
-      }
-    }
-    struct ViewModel {
-      enum ViewModelData {
-          case displayNewsFeed(feedViewModel: FeedViewModel)
-          case displayUser(userViewModel: UserViewModel)
-      }
-    }
-  }
-  
+    
 }
 
 struct UserViewModel: TitleViewViewModel {
