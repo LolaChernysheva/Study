@@ -13,7 +13,6 @@ class FooterView: UIView {
     private var myLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 13)
-        label.backgroundColor = .darkGray
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label

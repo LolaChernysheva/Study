@@ -82,10 +82,13 @@ class NewsFeedViewController: UIViewController, NewsFeedDisplayLogic, NewsFeedCe
         switch viewModel {
         case .displayNewsFeed(let feedViewModel):
             self.feedViewModel = feedViewModel
+            footerView.setTitle(feedViewModel.footerTitle)
             tableView.reloadData()
-            refreshControl.endRefreshing()
+            refreshControl.endRefreshing() 
         case .displayUser(userViewModel: let userViewModel):
             titleView.set(userViewModel: userViewModel)
+        case .displayFooterLoader:
+            footerView.showLoader()
         }
         
     }
@@ -109,6 +112,7 @@ class NewsFeedViewController: UIViewController, NewsFeedDisplayLogic, NewsFeedCe
         tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
         tableView.addSubview(refreshControl)
+        tableView.tableFooterView = footerView
     }
     
     private func setUpTopBars() {
