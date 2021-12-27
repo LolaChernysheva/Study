@@ -19,7 +19,7 @@ class NewsFeedViewController: UIViewController, NewsFeedDisplayLogic, NewsFeedCe
     
     var interactor: NewsFeedBusinessLogic?
     var router: (NSObjectProtocol & NewsFeedRoutingLogic)?
-    private var feedViewModel = FeedViewModel.init(cells: [])
+    private var feedViewModel = FeedViewModel.init(cells: [], footerTitle: nil)
     private var titleView = TitleView()
     private lazy var footerView = FooterView()  //lazy позволяет инициализировать объект только в момент вызова
     
