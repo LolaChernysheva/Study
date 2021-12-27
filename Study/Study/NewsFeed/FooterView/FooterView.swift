@@ -42,6 +42,14 @@ class FooterView: UIView {
         loader.topAnchor.constraint(equalTo: myLabel.bottomAnchor, constant: 8).isActive = true
     }
     
+    func showLoader() {
+        loader.startAnimating()
+    }
+    
+    func setTitle(_ title: String?) {
+        loader.stopAnimating()
+        myLabel.text = title
+    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
