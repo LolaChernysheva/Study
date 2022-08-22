@@ -1,1 +1,1 @@
-# Study
+# Study VK Project
