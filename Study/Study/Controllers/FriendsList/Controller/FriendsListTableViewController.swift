@@ -9,7 +9,7 @@ import UIKit
 
 class FriendsListTableViewController: UITableViewController {
     
-    private let networkService: Networking = NetworkService()
+    private var fetcher: DataFetcher = NetworkDataFetcher(networking: NetworkService() )
 
     var friends = [FriendModel(name: "Павел Чернышев", isOnline: true, avatarPath: "1"),
                    FriendModel(name: "Лолита Чернышева", isOnline: false, avatarPath: "2"),
@@ -43,25 +43,16 @@ class FriendsListTableViewController: UITableViewController {
     //MARK: - life cycle methods
     
     override func viewWillAppear(_ animated: Bool) {
-        
-        guard let authService = authService,
-              let token = authService.token,
-              let userId = authService.userId
-        else { return }
-        
-        let params: [String : String] =  ["access_token": token, "user_ids": userId, "order": "hints", "fields": "nickname", "name_case": "nom", "v" : API.version]
-        networkService.request(path: API.getFriends, params: params) { (data, error) in
-            if let error = error {
-                print("Error received requesting data: \(error.localizedDescription)")
+        fetcher.getFriend { friendsResponse in
+            guard let friendsResponse = friendsResponse else {
+                return
             }
-            
-            guard let data = data else { return }
-            //если data приходит, то распечатаем в формате JSON
-            let json = try? JSONSerialization.jsonObject(with: data, options: [])
-            print(json)
+            friendsResponse.items.map { friend in
+                print(friend.firstName)
+            }
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(FriendsTableViewCell.self, forCellReuseIdentifier: FriendsTableViewCell.friendsCellIdentifier)

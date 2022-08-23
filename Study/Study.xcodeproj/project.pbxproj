@@ -29,6 +29,7 @@
 		D353745B26B488E300EEBB37 /* FriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D353745A26B488E300EEBB37 /* FriendsTableViewCell.swift */; };
 		E4BE62B91C3652EC020631A3 /* Pods_StudyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8478001161ECBF304654FCE6 /* Pods_StudyTests.framework */; };
 		E96022E1DC6CFBF3C443CAAD /* Pods_Study.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2938D86AADCB7148DCFBEE47 /* Pods_Study.framework */; };
+		F315A9C528B4D265006AA2A6 /* FriendsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F315A9C428B4D265006AA2A6 /* FriendsResponse.swift */; };
 		F3480221274D2AFC004040CE /* GalleryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3480220274D2AFC004040CE /* GalleryCollectionView.swift */; };
 		F3480223274D2C4D004040CE /* GalleryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3480222274D2C4D004040CE /* GalleryCollectionViewCell.swift */; };
 		F3480225274D3D30004040CE /* RowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3480224274D3D30004040CE /* RowLayout.swift */; };
@@ -109,6 +110,7 @@
 		D353745526B467B600EEBB37 /* FriendPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendPhotoViewController.swift; sourceTree = "<group>"; };
 		D353745826B486C500EEBB37 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AvatarView.swift; path = Study/Controllers/AvatarView.swift; sourceTree = SOURCE_ROOT; };
 		D353745A26B488E300EEBB37 /* FriendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FriendsTableViewCell.swift; path = Study/Controllers/FriendsList/View/FriendsTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		F315A9C428B4D265006AA2A6 /* FriendsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsResponse.swift; sourceTree = "<group>"; };
 		F3480220274D2AFC004040CE /* GalleryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCollectionView.swift; sourceTree = "<group>"; };
 		F3480222274D2C4D004040CE /* GalleryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCollectionViewCell.swift; sourceTree = "<group>"; };
 		F3480224274D3D30004040CE /* RowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowLayout.swift; sourceTree = "<group>"; };
@@ -421,6 +423,7 @@
 			children = (
 				F35A03F227187BAD0033AB0B /* FeedResponse.swift */,
 				F348022B274FE67A004040CE /* UserResponse.swift */,
+				F315A9C428B4D265006AA2A6 /* FriendsResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -764,6 +767,7 @@
 				F3480221274D2AFC004040CE /* GalleryCollectionView.swift in Sources */,
 				F3DF1EE82719AD2000142D02 /* NewsFeedPresenter.swift in Sources */,
 				F3DF1EEA2719AD2000142D02 /* NewsFeedRouter.swift in Sources */,
+				F315A9C528B4D265006AA2A6 /* FriendsResponse.swift in Sources */,
 				F35A03F52718B1390033AB0B /* NetworkDataFetcher.swift in Sources */,
 				F3DF1EED2719AD2000142D02 /* NewsFeedInteractor.swift in Sources */,
 				84072FA926A59F8D00B0A9B8 /* AuthViewController.swift in Sources */,
