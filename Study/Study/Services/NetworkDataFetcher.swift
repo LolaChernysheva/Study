@@ -12,16 +12,34 @@ protocol DataFetcher {
     func getFeed(nextBatchFrom: String?, response: @escaping (FeedResponse?) -> Void)
     func getUser(response: @escaping (UserResponse?) -> Void)
     func getFriend(response: @escaping (FriendsResponse?) -> Void)
+    func getGroups(response: @escaping (GroupsResponse?) -> Void)
 }
 
 struct NetworkDataFetcher: DataFetcher {
-    
+
     let networking: Networking
     let authService: AuthService
     
     init(networking: Networking, authService: AuthService = SceneDelegate.shared().authService!) {
         self.networking = networking
         self.authService = authService
+    }
+    
+    func getGroups(response: @escaping (GroupsResponse?) -> Void) {
+        guard let authService = SceneDelegate.shared().authService,
+              let token = authService.token,
+              let userId = authService.userId
+        else { return }
+        let params = ["access_token": token, "user_id": userId, "extended": "1", "v": API.version]
+        networking.request(path: API.getGroups, params: params) { (data, error) in
+            if let error = error {
+                print("Error received requesting data\(error.localizedDescription)")
+                response(nil)
+            }
+            
+            let decoded = self.decodeJSON(type: GroupsResponseWrapped.self, from: data)
+            response(decoded?.response)
+        }
     }
     
     func getFriend(response: @escaping (FriendsResponse?) -> Void) {

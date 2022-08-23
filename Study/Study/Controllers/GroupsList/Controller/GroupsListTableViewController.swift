@@ -10,7 +10,9 @@
 import UIKit
 
 class GroupsListTableViewController: UITableViewController {
-	
+    
+    private var fetcher: DataFetcher = NetworkDataFetcher(networking: NetworkService())
+    
 	lazy var searchGroupController = SearchGroupTableViewController()
     
     var groupsList = [GroupModel(groupName: "Pikabu", avatarPath: "persik1"),
@@ -36,6 +38,19 @@ class GroupsListTableViewController: UITableViewController {
     let searchController = UISearchController()
 
     //MARK: - Life cycle
+    
+    override func viewWillAppear(_ animated: Bool) {
+        fetcher.getGroups { groupResponse in
+            guard let groupResponse = groupResponse else {
+                return
+            }
+            groupResponse.items.map { group in
+                print(group.name)
+            }
+        }
+    }
+    
+     
     
     override func viewDidLoad() {
         super.viewDidLoad()
