@@ -8,6 +8,8 @@
 import UIKit
 
 class FriendsListTableViewController: UITableViewController {
+    
+    private let networkService: Networking = NetworkService()
 
     var friends = [FriendModel(name: "Павел Чернышев", isOnline: true, avatarPath: "1"),
                    FriendModel(name: "Лолита Чернышева", isOnline: false, avatarPath: "2"),
@@ -36,6 +38,29 @@ class FriendsListTableViewController: UITableViewController {
     var friendsSection = [Sections<FriendModel>]()
     var customRefreshControl = UIRefreshControl()
     let searchController = UISearchController()
+    let authService = SceneDelegate.shared().authService
+    
+    //MARK: - life cycle methods
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        guard let authService = authService,
+              let token = authService.token,
+              let userId = authService.userId
+        else { return }
+        
+        let params: [String : String] =  ["access_token": token, "user_ids": userId, "order": "hints", "fields": "nickname", "name_case": "nom", "v" : API.version]
+        networkService.request(path: API.getFriends, params: params) { (data, error) in
+            if let error = error {
+                print("Error received requesting data: \(error.localizedDescription)")
+            }
+            
+            guard let data = data else { return }
+            //если data приходит, то распечатаем в формате JSON
+            let json = try? JSONSerialization.jsonObject(with: data, options: [])
+            print(json)
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
