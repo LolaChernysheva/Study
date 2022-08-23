@@ -31,6 +31,7 @@
 		E96022E1DC6CFBF3C443CAAD /* Pods_Study.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2938D86AADCB7148DCFBEE47 /* Pods_Study.framework */; };
 		F315A9C528B4D265006AA2A6 /* FriendsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F315A9C428B4D265006AA2A6 /* FriendsResponse.swift */; };
 		F315A9C728B5256F006AA2A6 /* GroupsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F315A9C628B5256F006AA2A6 /* GroupsResponse.swift */; };
+		F315A9C928B52E12006AA2A6 /* PhotoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F315A9C828B52E12006AA2A6 /* PhotoResponse.swift */; };
 		F3480221274D2AFC004040CE /* GalleryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3480220274D2AFC004040CE /* GalleryCollectionView.swift */; };
 		F3480223274D2C4D004040CE /* GalleryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3480222274D2C4D004040CE /* GalleryCollectionViewCell.swift */; };
 		F3480225274D3D30004040CE /* RowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3480224274D3D30004040CE /* RowLayout.swift */; };
@@ -113,6 +114,7 @@
 		D353745A26B488E300EEBB37 /* FriendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FriendsTableViewCell.swift; path = Study/Controllers/FriendsList/View/FriendsTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		F315A9C428B4D265006AA2A6 /* FriendsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsResponse.swift; sourceTree = "<group>"; };
 		F315A9C628B5256F006AA2A6 /* GroupsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsResponse.swift; sourceTree = "<group>"; };
+		F315A9C828B52E12006AA2A6 /* PhotoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoResponse.swift; sourceTree = "<group>"; };
 		F3480220274D2AFC004040CE /* GalleryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCollectionView.swift; sourceTree = "<group>"; };
 		F3480222274D2C4D004040CE /* GalleryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCollectionViewCell.swift; sourceTree = "<group>"; };
 		F3480224274D3D30004040CE /* RowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowLayout.swift; sourceTree = "<group>"; };
@@ -427,6 +429,7 @@
 				F348022B274FE67A004040CE /* UserResponse.swift */,
 				F315A9C428B4D265006AA2A6 /* FriendsResponse.swift */,
 				F315A9C628B5256F006AA2A6 /* GroupsResponse.swift */,
+				F315A9C828B52E12006AA2A6 /* PhotoResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -773,6 +776,7 @@
 				F3DF1EEA2719AD2000142D02 /* NewsFeedRouter.swift in Sources */,
 				F315A9C528B4D265006AA2A6 /* FriendsResponse.swift in Sources */,
 				F35A03F52718B1390033AB0B /* NetworkDataFetcher.swift in Sources */,
+				F315A9C928B52E12006AA2A6 /* PhotoResponse.swift in Sources */,
 				F3DF1EED2719AD2000142D02 /* NewsFeedInteractor.swift in Sources */,
 				84072FA926A59F8D00B0A9B8 /* AuthViewController.swift in Sources */,
 				F3DF1EF9272C354D00142D02 /* Constants.swift in Sources */,

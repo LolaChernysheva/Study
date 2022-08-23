@@ -45,8 +45,16 @@ class GroupsListTableViewController: UITableViewController {
                 return
             }
             groupResponse.items.map { group in
-                print(group.name)
+              //  print(group.name)
             }
+        }
+        
+        fetcher.getPhotos { photosResponse in
+            guard let photosResponse = photosResponse else {
+                return
+            }
+            print("ФОТО\(photosResponse)")
+
         }
     }
     
