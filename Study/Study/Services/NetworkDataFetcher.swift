@@ -14,6 +14,7 @@ protocol DataFetcher {
     func getFriend(response: @escaping (FriendsResponse?) -> Void)
     func getGroups(response: @escaping (GroupsResponse?) -> Void)
     func getPhotos(response: @escaping (PhotoResponse?) -> Void)
+    func getGroupsBySearch(response: @escaping (GroupsResponse?) -> Void)
 }
 
 struct NetworkDataFetcher: DataFetcher {
@@ -24,6 +25,25 @@ struct NetworkDataFetcher: DataFetcher {
     init(networking: Networking, authService: AuthService = SceneDelegate.shared().authService!) {
         self.networking = networking
         self.authService = authService
+    }
+    
+    func getGroupsBySearch(response: @escaping (GroupsResponse?) -> Void) {
+        guard let authService = SceneDelegate.shared().authService,
+              let token = authService.token,
+              let userId = authService.userId
+        else { return }
+        
+        let params = ["access_token": token, "q": "Music", "v": API.version]
+        networking.request(path: API.getGroupsBySearch, params: params) { (data, error) in
+            if let error = error {
+                print("Error received requesting data\(error.localizedDescription)")
+                response(nil)
+            }
+            
+            let decoded = self.decodeJSON(type: GroupsResponseWrapped.self, from: data)
+            response(decoded?.response)
+        }
+        
     }
     
     func getPhotos(response: @escaping (PhotoResponse?) -> Void) {

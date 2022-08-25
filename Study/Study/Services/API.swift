@@ -17,5 +17,6 @@ struct API {
     static let getFriends = "/method/friends.get"
     static let getGroups = "/method/groups.get"
     static let getPhotos = "/method/photos.get"
+    static let getGroupsBySearch = "/method/groups.search"
 }
 
