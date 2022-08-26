@@ -41,24 +41,29 @@ class GroupsListTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         fetcher.getGroups { groupResponse in
-            guard let groupResponse = groupResponse else {
-                return
-            }
+            guard let groupResponse = groupResponse else { return }
             groupResponse.items.map { group in
-              //  print(group.name)
+                for var groupItem in self.groupsList {
+                    groupItem.groupName = group.name
+                    print("ЛОЛА\(groupItem.groupName)")
+                    //self.tableView.reloadData()
+                }
             }
         }
         
         fetcher.getPhotos { photosResponse in
-            guard let photosResponse = photosResponse else {
-                return
-            }
-            print("ФОТО\(photosResponse)")
+            guard let photosResponse = photosResponse else { return }
+        //    print("ФОТО\(photosResponse)")
 
         }
+        
+        fetcher.getGroupsBySearch { groupResponse in
+            guard let groupResponse = groupResponse else { return }
+            groupResponse.items.map { group in
+
+            }
+        }
     }
-    
-     
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -174,7 +179,7 @@ class GroupsListTableViewController: UITableViewController {
 	}
 }
 
-//MARK:-UISearchBarDelegate
+//MARK: - UISearchBarDelegate
 
 extension GroupsListTableViewController: UISearchBarDelegate {
     //отрабатывает каждый раз, когда происходит модификация внутри searchBar
