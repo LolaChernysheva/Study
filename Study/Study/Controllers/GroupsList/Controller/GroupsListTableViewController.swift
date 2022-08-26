@@ -14,56 +14,12 @@ class GroupsListTableViewController: UITableViewController {
     private var fetcher: DataFetcher = NetworkDataFetcher(networking: NetworkService())
     
 	lazy var searchGroupController = SearchGroupTableViewController()
-    
-    var groupsList = [GroupModel(groupName: "Pikabu", avatarPath: "persik1"),
-                      GroupModel(groupName: "Вконтакте", avatarPath: "persik2"),
-                      GroupModel(groupName: "Питер", avatarPath: "persik3"),
-                      GroupModel(groupName: "Москва", avatarPath: "persik1"),
-                      GroupModel(groupName: "Саратов", avatarPath: "persik2"),
-                      GroupModel(groupName: "Воронеж", avatarPath: "persik3"),
-                      GroupModel(groupName: "Ростов", avatarPath: "persik1"),
-                      GroupModel(groupName: "Севастополь", avatarPath: "persik2"),
-                      GroupModel(groupName: "Алушта", avatarPath: "persik3"),
-                      GroupModel(groupName: "Хабаровск", avatarPath: "persik1"),
-                      GroupModel(groupName: "Красноярск", avatarPath: "persik2"),
-                      GroupModel(groupName: "Калининград", avatarPath: "persik3"),
-                      GroupModel(groupName: "Днепропетровск", avatarPath: "persik1"),
-                      GroupModel(groupName: "Киров", avatarPath: "persik2"),
-                      GroupModel(groupName: "Вологда", avatarPath: "persik3"),
-                      GroupModel(groupName: "Анапа", avatarPath: "persik1"),
-                      GroupModel(groupName: "Абакан", avatarPath: "persik2"),
-                      GroupModel(groupName: "Нур-Султан", avatarPath: "persik3")]
-    
-    var groupsSection = [Sections<GroupModel>]()
+    var groupsList = [Group]()
+    var groupsSection = [Sections<Group>]()
     let searchController = UISearchController()
+    var groupsResponse: GroupsResponse?
 
     //MARK: - Life cycle
-    
-    override func viewWillAppear(_ animated: Bool) {
-        fetcher.getGroups { groupResponse in
-            guard let groupResponse = groupResponse else { return }
-            groupResponse.items.map { group in
-                for var groupItem in self.groupsList {
-                    groupItem.groupName = group.name
-                    print("ЛОЛА\(groupItem.groupName)")
-                    //self.tableView.reloadData()
-                }
-            }
-        }
-        
-        fetcher.getPhotos { photosResponse in
-            guard let photosResponse = photosResponse else { return }
-        //    print("ФОТО\(photosResponse)")
-
-        }
-        
-        fetcher.getGroupsBySearch { groupResponse in
-            guard let groupResponse = groupResponse else { return }
-            groupResponse.items.map { group in
-
-            }
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,8 +28,8 @@ class GroupsListTableViewController: UITableViewController {
 		initialize()
         configureSearchBar()
         configureSections()
+        requestsCalling()
         searchController.searchBar.delegate = self
-
     }
 
     // MARK: - Table view
@@ -111,8 +67,8 @@ class GroupsListTableViewController: UITableViewController {
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: GroupsTableViewCell.groupsCellIdentifier, for: indexPath) as? GroupsTableViewCell else { return UITableViewCell() }
                 
-        cell.groupName.text = groupsSection[indexPath.section].items[indexPath.row].groupName
-        cell.groupAvatar.avatarImageView.image = UIImage(named: groupsSection[indexPath.section].items[indexPath.row].avatarPath)
+        cell.groupName.text = groupsSection[indexPath.section].items[indexPath.row].name
+        cell.groupAvatar.avatarImageView.image = UIImage(named: groupsSection[indexPath.section].items[indexPath.row].photo100)
 		return cell
 	}
 	
@@ -144,7 +100,7 @@ class GroupsListTableViewController: UITableViewController {
     func configureSections() {
         //создание словаря из массива и группировкой по первому символу name
         let groupsDictionary = Dictionary.init(grouping: groupsList) {
-            $0.groupName.prefix(1)
+            $0.name.prefix(1)
         }
         //конвертация словаря в секцию с заголовком и элементами
         groupsSection = groupsDictionary.map { Sections(title: String($0.key), items: $0.value) }
@@ -152,13 +108,37 @@ class GroupsListTableViewController: UITableViewController {
         groupsSection.sort { $0.title < $1.title }
     }
     
-    func addElement(_ element: GroupModel) {
+    func addElement(_ element: Group) {
         groupsList.append(element)
         configureSections()
         tableView.reloadData()
     }
 	
      //MARK: - private
+    
+    private func requestsCalling() {
+        self.fetcher.getGroups { groupResponse in
+            guard let groupResponse = groupResponse else { return }
+            self.groupsResponse = groupResponse
+            groupResponse.items.map { group in
+                self.groupsList.append(group)
+            }
+            self.configureSections()
+            self.tableView.reloadData()
+        }
+        
+        self.fetcher.getPhotos { photosResponse in
+            guard let photosResponse = photosResponse else { return }
+
+        }
+        
+        self.fetcher.getGroupsBySearch { groupResponse in
+            guard let groupResponse = groupResponse else { return }
+            groupResponse.items.map { group in
+
+            }
+        }
+    }
     
 	private func initialize() {
 		view.backgroundColor = AppAppearence.backgroundColor
@@ -185,14 +165,13 @@ extension GroupsListTableViewController: UISearchBarDelegate {
     //отрабатывает каждый раз, когда происходит модификация внутри searchBar
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         let groupsDictionary = Dictionary.init(grouping: groupsList.filter { (group) -> Bool in
-            return searchText.isEmpty ? true : group.groupName.lowercased().contains(searchText.lowercased())
-        }) { $0.groupName.prefix(1) }
+            return searchText.isEmpty ? true : group.name.lowercased().contains(searchText.lowercased())
+        }) { $0.name.prefix(1) }
         groupsSection = groupsDictionary.map { Sections(title: String($0.key), items: $0.value) }
         groupsSection.sort { $0.title < $1.title }
         tableView.reloadData()
-        print(searchText)
     }
-    
+
     //отработает при нажатии на кнопку поиска
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         //окончание редактирования. Позволяет скрыть клавиатуру

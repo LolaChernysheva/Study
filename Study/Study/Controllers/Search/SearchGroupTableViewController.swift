@@ -15,10 +15,11 @@ class SearchGroupTableViewController: UITableViewController {
 
     var groupListVC: GroupsListTableViewController?
     
-	public var groupToAdd = [GroupModel(groupName: "апро", avatarPath: "persik1"),
-                             GroupModel(groupName: "сми", avatarPath: "persik3")]
+//	public var groupToAdd = [GroupModel(groupName: "апро", avatarPath: "persik1"),
+//                             GroupModel(groupName: "сми", avatarPath: "persik3")]
+    public var groupToAdd = [Group(id: 1, name: "", photo100: "")]
     
-    var groupsSection = [Sections<GroupModel>]()
+    var groupsSection = [Sections<Group>]()
     let searchController = UISearchController()
     
     override func viewDidLoad() {
@@ -66,8 +67,8 @@ class SearchGroupTableViewController: UITableViewController {
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		 guard let cell = tableView.dequeueReusableCell(withIdentifier: GroupsTableViewCell.groupsCellIdentifier, for: indexPath) as? GroupsTableViewCell else { return UITableViewCell() }
-        cell.groupName.text = groupsSection[indexPath.section].items[indexPath.row].groupName
-        cell.groupAvatar.avatarImageView.image = UIImage(named: groupsSection[indexPath.section].items[indexPath.row].avatarPath)
+        cell.groupName.text = groupsSection[indexPath.section].items[indexPath.row].name
+        cell.groupAvatar.avatarImageView.image = UIImage(named: groupsSection[indexPath.section].items[indexPath.row].photo100)
 		return cell
 	}
 	
@@ -108,7 +109,7 @@ class SearchGroupTableViewController: UITableViewController {
     func configureSections() {
         //создание словаря из массива и группировкой по первому символу name
         let groupsDictionary = Dictionary.init(grouping: groupToAdd) {
-            $0.groupName.prefix(1)
+            $0.name.prefix(1)
         }
         //конвертация словаря в секцию с заголовком и элементами
         groupsSection = groupsDictionary.map { Sections(title: String($0.key), items: $0.value) }
@@ -116,7 +117,7 @@ class SearchGroupTableViewController: UITableViewController {
         groupsSection.sort { $0.title < $1.title }
     }
     
-    func addElement(_ element: GroupModel) {
+    func addElement(_ element: Group) {
         groupToAdd.append(element)
         configureSections()
         tableView.reloadData()
@@ -129,8 +130,8 @@ extension SearchGroupTableViewController: UISearchBarDelegate {
     //отрабатывает каждый раз, когда происходит модификация внутри searchBar
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         let groupsDictionary = Dictionary.init(grouping: groupToAdd.filter { (group) -> Bool in
-            return searchText.isEmpty ? true : group.groupName.lowercased().contains(searchText.lowercased())
-        }) { $0.groupName.prefix(1) }
+            return searchText.isEmpty ? true : group.name.lowercased().contains(searchText.lowercased())
+        }) { $0.name.prefix(1) }
         groupsSection = groupsDictionary.map { Sections(title: String($0.key), items: $0.value) }
         groupsSection.sort { $0.title < $1.title }
         tableView.reloadData()
